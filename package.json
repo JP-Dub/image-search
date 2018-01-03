@@ -1,7 +1,7 @@
 {
-  "name": "url-shortener",
+  "name": "image-search",
   "version": "1.0.0",
-  "description": "FCC Backend Challenge: URL Shortener Microservice",
+  "description": "FCC Backend Challenge: Image Search Abstraction Layer",
   "main": "server.js",
   "dependencies": {
     "bson-ext": "^1.0.5",
