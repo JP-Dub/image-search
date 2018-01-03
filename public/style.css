@@ -1,0 +1,79 @@
+/****** Main Styling ******/
+
+body {
+	font-family: 'Roboto', sans-serif;
+	font-size: 17px;
+  font-size: 1.7vmin;
+	color: #222;
+	background-color: white;
+	text-align: center;
+}
+
+.container {
+  position: relative;
+  height: auto;
+  width: 85%;
+	padding: 0;
+	margin-top: 2%;
+  margin-left: 7.5%;
+}
+
+header {
+  line-height: 30px;
+  line-height: 3vmin;
+  font-size: 37px;
+  font-size: 3.5vmin;
+  margin-left: 0;
+  text-align: left;
+}
+
+article {
+  line-height: 20px;
+  line-height: 2vmin;
+  margin-top: -10px;
+  margin-top: 1vmin;
+  padding-left: 20px;
+  padding-left: 2vmin;
+  text-align: left;
+  margin-left: 0;
+  border-left: 5px solid #fce9e9;
+  border-left: .5vmin solid #fce9e9;
+}
+
+article p:nth-child(1) {
+  padding-top: 10px;
+  padding-top: 1vmin;
+}
+
+.user {
+  margin-left: 45px;
+  margin-left: 4.5vw;
+  line-height: 30px;
+  line-height: 3vmin;
+}
+
+footer {
+  position: relative;
+  margin-left: 0;
+  text-align: left;
+  height: auto;
+}
+
+mark {
+  background-color: #fce9e9;
+  color: red;
+}
+
+footer p {
+  font-size: 12px;
+  font-size: 1.2vmin;
+  line-height: 20px;
+  line-height: 2vmin;
+}
+
+.example {
+  font-size: 26px;
+  font-size: 2.6vmin;
+  background-color: white;
+  color: black;
+}

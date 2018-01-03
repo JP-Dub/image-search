@@ -1,0 +1,64 @@
+{
+  "name": "url-shortener",
+  "version": "1.0.0",
+  "description": "FCC Backend Challenge: URL Shortener Microservice",
+  "main": "server.js",
+  "dependencies": {
+    "bson-ext": "^1.0.5",
+    "express": "^4.16.2",
+    "kerberos": "0.0.23",
+    "mongodb": "^3.0.1",
+    "node-gyp": "^3.6.2",
+    "valid-url": "^1.0.9"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "engines": {
+    "node": "8.x"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/JP-Dub/header-request"
+  },
+  "author": "jDub",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/JP-Dub/header-request/issues"
+  },
+  "keywords": [
+    "fcc",
+    "freecodecamp",
+    "jdub",
+    "image search abstraction layer"
+  ]
+}{
+  "name": "image-search",
+  "version": "1.0.0",
+  "description": "FCC Backend Challenge: Image Search Abstraction Layer",
+  "main": "server.js",
+  "dependencies": {
+    "bson-ext": "^1.0.5",
+    "mongodb": "^3.0.1",
+    "node-gyp": "^3.6.2",
+    "kerberos": "^0.0.23"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "keywords": [
+    "fcc",
+    "freecodecamp",
+    "jDub",
+    "image",
+    "search",
+    "abstraction",
+    "layer"
+  ],
+  "author": "jDub",
+  "license": "ISC"
+}

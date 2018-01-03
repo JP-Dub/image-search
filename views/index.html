@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang = "en"> 
+   <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta charset = "utf-8">     
+     <title>Backend Challenges | Free Code Camp</title>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="/public/style.css" rel="stylesheet" type="text/css">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta charset = "UTF-8"/>
+   </head>   
+   <body>
+      <div class="container">
+        <header>API Basejump: <em>URL Shortener Microservice</em></header><br>
+        <article>
+        <p>User stories:</p>
+          <p class="user">1) I can pass a valid URL as a parameter and I will receive a shortened URL in the JSON response.<br> 2) When I visit the shortened URL, it will redirect me to the original link.</p>
+        </article>
+          <footer>
+          <p class="example">
+            Example creation usage:
+          </p>
+            <p><mark>https://glacier-feather.glitch.me/https://www.cnn.com</mark></p>
+            <p><mark>https://glacier-feather.glitch.me/https://www.foxnews.com</mark></p>
+          <p class="example">
+            Example creation output:
+          </p>
+          <p><mark>
+            { "original_url": "http://foo.com:80", "shortened_url": "https://glacier-feather.glitch.me/sho.rt/RkYrez" }</mark></p>
+          <p class="example">
+            Usage:
+          </p>
+            <p><mark>https://glacier-feather.glitch.me/sho.rt/o8Kegs</mark></p>
+          <p class="example">
+            Will redirect to:
+          </p>
+            <p><mark>https://google.com/</mark></p>
+            </footer>
+      </div>
+   </body>
+</html>
