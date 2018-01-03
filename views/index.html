@@ -11,17 +11,18 @@
    </head>   
    <body>
       <div class="container">
-        <header>API Basejump: <em>URL Shortener Microservice</em></header><br>
+        <header>API Basejump: <em>Image Search Abstraction Layer</em></header><br>
         <article>
         <p>User stories:</p>
-          <p class="user">1) I can pass a valid URL as a parameter and I will receive a shortened URL in the JSON response.<br> 2) When I visit the shortened URL, it will redirect me to the original link.</p>
+          <p class="user">1) I can get the image URLs, alt text and page urls for a set of images relating to a given search string.<br> 2) I can paginate through the responses by adding a '<em>?offset=2</em>' parameter to the URL.<br> 3) I can get a list of the most recently submitted search strings.</p>
         </article>
           <footer>
           <p class="example">
             Example creation usage:
           </p>
-            <p><mark>https://glacier-feather.glitch.me/https://www.cnn.com</mark></p>
-            <p><mark>https://glacier-feather.glitch.me/https://www.foxnews.com</mark></p>
+            <p><mark>https://imaginary-bank.glitch.me/search/[your search term]</mark></p>
+            <p><mark>https://imaginary-bank.glitch.me/search/[your search term]?offset=[a number to paginate]</mark></p>
+            <p><mark>https://imaginary-bank.glitch.me/search/history</mark></p>
           <p class="example">
             Example creation output:
           </p>
