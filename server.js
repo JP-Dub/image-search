@@ -52,7 +52,7 @@ app.get("/*", function (req, res, next) {
         if (!urlLib.length) {  
           // produces a random 6 alpha-numeric string for the shortened url
           for (var i = 0; i < 6; i++) {
-            short += str[Math.floor(Math.random() * str.length)];
+            short += str[Math.floor(Math.random() * 42];
           }
           // if the url is found in the database it is posted
           var obj = {
