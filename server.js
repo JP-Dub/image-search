@@ -27,9 +27,9 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-  var show = mongo.search("history");
-  console.log(show)
-  res.json(mongo.search);
+  mongo.search("history");
+  console.log(mongo.search.history)
+  res.json(mongo.search.history);
 });
 
 // listen for requests 
