@@ -10,14 +10,11 @@ var MongoClient = require('mongodb').MongoClient,
     assert.equal(null, err);
     console.log('Mongo connection established...');
   
-    var db = client.db(dbName);
-    
-    // function to check, create, log, and post url queries and results.     
-    function process(url) {
-      // Get the urlLib collection
-      var collection = db.collection('history');
-      
-        
+    var db = client.db(dbName);  
+    var collection = db.collection('history');
+       
       // checks for url in database     
       collection.find({original_url : url}).toArray(function(err, urlLib) {
         assert.equal(err, null);
+      }                                                    
+}
