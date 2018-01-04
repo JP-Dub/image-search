@@ -1,3 +1,4 @@
+'use strict';
 // init project
 var str = "abcde0fghij1klmno2pqrst3uvwxy4zABCD5EFGHI6JKLMN7OPQRS8TUVWX9YZ",  // string hash for random()
     MongoClient = require('mongodb').MongoClient,
