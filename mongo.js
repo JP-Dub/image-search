@@ -5,6 +5,8 @@ var MongoClient = require('mongodb').MongoClient,
     dbName = "urlDatabase",
     app = express();
 
+
+exports.search = function(query) {
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
@@ -13,23 +15,20 @@ var MongoClient = require('mongodb').MongoClient,
     var db = client.db(dbName);  
     var collection = db.collection('history');
     
-    app.get("/search/*", function (req, res, next) {
-    var url = req.params[0];
-     console.log(url);
     
-    
-    var date = new Date().toString();
-            // inserts the newly created short url with the queried url 
-    collection.insertOne({search: url, time: date}, function(err, results) {
-      assert.equal(err, null);
-      res.json(results);
-      client.close();          
-    }); 
-      
-    });
-    
-    // checks for url in database     
-    collection.find({search : "cars" }).toArray(function(err, urlLib) {
+    if(!"history") {
+      var date = new Date().toString();
+      // inserts the newly created short url with the queried url 
+      collection.insertOne({search: query, time: date}, function(err, results) {
         assert.equal(err, null);
-    });                                                    
+        console.log(results, "success");
+        client.close();          
+      }); 
+    } else {       
+      // checks for url in database     
+      collection.find({search : "cars" }).toArray(function(err, urlLib) {
+        assert.equal(err, null);
+      });     
+    }
 });
+}
