@@ -5,7 +5,7 @@ var MongoClient = require('mongodb').MongoClient,
     dbName = "urlDatabase",
     app = express();
 var history;
-exports.history = history;
+
 
 exports.search = function(query) {
 // Use connect method to connect to the Server
@@ -38,14 +38,14 @@ exports.search = function(query) {
                  }, {
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
-        history = history;
-        //history(obj);
         console.log("closing client");
-        client.close();     
+        client.close();   
+        console.log("return the history, b", history);
+        return history;
       }); 
-      
+    
     }
 });
 }
 
-
+  exports.history = history;

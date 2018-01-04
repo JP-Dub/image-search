@@ -27,9 +27,13 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-  mongo.search("history");
-  
-  res.json(mongo.history);
+  var hist = mongo.search("history");
+  if(!hist){
+    next("undefined") 
+  }
+      else {
+  res.json(hist);
+      }
 });
 
 // listen for requests 
