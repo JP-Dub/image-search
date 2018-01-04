@@ -4,8 +4,8 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert'),
     dbName = "urlDatabase",
     app = express();
-var history = {};
-
+var history;
+exports.history = history;
 
 exports.search = function(query) {
 // Use connect method to connect to the Server
@@ -28,7 +28,7 @@ exports.search = function(query) {
       }); 
     } else {       
          
-      // checks for url in database     
+      // returns search history and time from database     
       collection.find( {}, {
                  projection : 
                    {_id: 0, Search: 1, Time: 1}
@@ -39,14 +39,13 @@ exports.search = function(query) {
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
         history = history;
+        //history(obj);
         console.log("closing client");
         client.close();     
       }); 
-      return history;
+      
     }
 });
 }
 
-exports.history = function(history) {
-  return history;
-  }
+

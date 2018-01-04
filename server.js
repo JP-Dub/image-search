@@ -28,8 +28,8 @@ app.get("/search/*", function (req, res, next) {
 
 app.get("/history", function (req, res, next) {
   mongo.search("history");
-  console.log(mongo.search.history)
-  res.json(mongo.search.history);
+  
+  res.json(mongo.history);
 });
 
 // listen for requests 
