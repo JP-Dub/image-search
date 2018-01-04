@@ -4,7 +4,6 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert'),
     dbName = "urlDatabase",
     app = express();
-//var seeHistory = {};
 
 
 
@@ -28,6 +27,7 @@ exports.search = function(query) {
         client.close();          
       }); 
     } else {       
+         
       // checks for url in database     
       collection.find( {}, {
                  projection : 
@@ -37,17 +37,16 @@ exports.search = function(query) {
                    {Time: -1}
                  }, {
                  limit : 10 }).toArray(function(err, history) {
-        assert.equal(err, null);
-        
-        
-        client.close();
-        
+        assert.equal(err, null); 
+        var history = history;
+        console.log("closing client");
+        client.close();     
       });     
     }
 });
 }
 
-      exports.history = function(seeHistory) {
-        console.log(seeHistory);
-        return seeHistory;
-        }
+exports.history = function(seeHistory) {
+  console.log(seeHistory);
+  return history;
+  }
