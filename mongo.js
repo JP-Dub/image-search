@@ -45,7 +45,7 @@ exports.search = function(query) {
        // return history;
       });    
     }
-});
+ });
 }
 
 exports.history = obj;
