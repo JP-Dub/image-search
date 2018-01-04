@@ -8,7 +8,7 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert'),
     dbName = "urlDatabase",
     app = express();
-    
+    require('./mongo');
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -22,7 +22,7 @@ app.get("/", function (request, response) {
 
 app.get("/search/*", function (req, res, next) {
   var url = req.params[0];
-  res.send(url);
+  res.send("score");
 });
 
 app.get("/history", function (req, res, next) {
