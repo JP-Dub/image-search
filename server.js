@@ -40,7 +40,7 @@ app.get("/*", function (req, res, next) {
     // function to check, create, log, and post url queries and results.     
     function process(url) {
       // Get the urlLib collection
-      var collection = db.collection('urlLib');
+      var collection = db.collection('history');
       var short ="sho.rt/";
         
       // checks for url in database     
