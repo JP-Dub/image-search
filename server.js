@@ -25,6 +25,11 @@ app.get("/search/*", function (req, res, next) {
   res.send(url);
 });
 
+app.get("/history", function (req, res, next) {
+  var url = req.params[0];
+  res.send(url);
+});
+
 // listen for requests 
 var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
