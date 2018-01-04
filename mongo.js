@@ -25,9 +25,19 @@ exports.search = function(query) {
       }); 
     } else {       
       // checks for url in database     
-      collection.find().select({_id: 0search: "", time: ""}, {limit: 10, sort: -1 ).toArray(function(err, history) {
+      collection.find( {},
+                      {projection : 
+                       {_id: 0, search: 1, time: 1}
+                      }, { 
+                       sort : 
+                        {time: -1}
+      }, {
+        limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null);
+        console.log(history)
         return history;
+        client.close();
+        
       });     
     }
 });
