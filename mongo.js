@@ -15,16 +15,18 @@ var MongoClient = require('mongodb').MongoClient,
     
     app.get("/search/*", function (req, res, next) {
     var url = req.params[0];
-    res.json(url);
-    });
+     console.log(url);
     
-    var date = date.now();
+    
+    var date = new Date().toString();
             // inserts the newly created short url with the queried url 
     collection.insertOne({search: url, time: date}, function(err, results) {
       assert.equal(err, null);
-      res.json(obj);
+      res.json(results);
       client.close();          
     }); 
+      
+    });
     
     // checks for url in database     
     collection.find({search : "cars" }).toArray(function(err, urlLib) {
