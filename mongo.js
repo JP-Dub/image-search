@@ -39,7 +39,11 @@ exports.search = function(query) {
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
         console.log("closing client");
-        client.close();   
+        client.close();        
+        app.use("/history", function(req,res, next) {
+          console.log("is anyone out there?");
+          res.json(history);
+        });;
         console.log("return the history, b", history);
         return history;
       }); 
