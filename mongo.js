@@ -14,8 +14,7 @@ exports.search = function(query) {
   
     var db = client.db(dbName);  
     var collection = db.collection('history');
-    
-    
+      
     if(!"history") {
       var date = new Date().toString();
       // inserts the newly created short url with the queried url 
@@ -26,8 +25,9 @@ exports.search = function(query) {
       }); 
     } else {       
       // checks for url in database     
-      collection.find({search : "cars" }).toArray(function(err, urlLib) {
+      collection.find().select({_id: 0search: "", time: ""}, {limit: 10, sort: -1 ).toArray(function(err, history) {
         assert.equal(err, null);
+        return history;
       });     
     }
 });
