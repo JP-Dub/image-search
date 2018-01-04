@@ -27,7 +27,7 @@ app.get("/search/*", function (req, res, next) {
 
 app.get("/history", function (req, res, next) {
   var url = req.params[0];
-  res.send(url);
+  res.send("yo mamma");
 });
 
 // listen for requests 
