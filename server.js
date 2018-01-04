@@ -27,13 +27,8 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-  var hist = mongo.search("history");
-  if(!hist){
-    next("undefined") 
-  }
-      else {
-  res.json(hist);
-      }
+  mongo.search("history");
+  res.json(mongo.history);
 });
 
 // listen for requests 
@@ -42,7 +37,6 @@ var listener = app.listen(process.env.PORT, function () {
 });
 
 /*
-
 app.get("/search/*", function (req, res, next) {
   var url = req.params[0];
   var reg = /(sho.rt\/)\w{6,}/gi;
