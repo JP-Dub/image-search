@@ -20,7 +20,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/*", function (req, res, next) {
+app.get("/search/*", function (req, res, next) {
   var url = req.params[0];
   var reg = /(sho.rt\/)\w{6,}/gi;
   // checks if url query is a valid url and isn't a shortened url
