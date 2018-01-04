@@ -9,6 +9,9 @@ var str = "abcde0fghij1klmno2pqrst3uvwxy4zABCD5EFGHI6JKLMN7OPQRS8TUVWX9YZ",  // 
     app = express();
 
 // http://expressjs.com/en/starter/static-files.html
+app.use(express.static('public'));
+
+// http://expressjs.com/en/starter/static-files.html
 app.use('/public', express.static(process.cwd() + '/public'));
 
 // http://expressjs.com/en/starter/basic-routing.html
