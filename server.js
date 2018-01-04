@@ -22,7 +22,7 @@ app.get("/", function (request, response) {
 
 app.get("/search/*", function (req, res, next) {
   var url = req.params[0];
-  res.json(url);
+  res.send(url);
 });
 
 // listen for requests 
