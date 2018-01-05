@@ -27,11 +27,13 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-  if(mongo.search()) {
-    next();
+  mongo.search( null, function(err, history) {
+    if(err) return console.error;
+    var wtf = mongo.history;
+    console.log(wtf);
   }
-   console.log("wtf");
-  res.json(mongo.history);
+   
+  res.json("what?");
 });
 
 // listen for requests 
