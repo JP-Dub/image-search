@@ -41,7 +41,7 @@ exports.search = function(query) {
         console.log("closing client");
         client.close();        
         console.log("return the history, b", history);
-       // return history;
+        exports.history = history;
       });    
     }
  });
