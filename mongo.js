@@ -4,13 +4,10 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert'),
     dbName = "urlDatabase",
     app = express();
-var obj = {};
-
-exports.history = obj;
- 
-
+//var obj = {};
+console.log("read the page")
 exports.search = function(query) {
-  
+console.log("then read this!");
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
@@ -31,8 +28,7 @@ exports.search = function(query) {
         //client.close();          
       }); 
     }
-          
-         
+              
       // returns search history and time from db     
       collection.find( {}, {
                  projection : 
@@ -44,16 +40,17 @@ exports.search = function(query) {
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
         //console.log("closing client");
-        obj = history;
+        var obj = history;
         client.close();        
-        //console.log("return the history, b", history[0]);
+        console.log("return the history, b", history[0]);
       
-        //return history;        
+        return history;        
       });    
     
  });
 }
-         
+
+        
 /*
 
 exports.search = function(query) {
