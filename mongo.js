@@ -41,10 +41,8 @@ exports.search = function(query) {
         console.log("closing client");
         client.close();        
         console.log("return the history, b", history);
-        exports.history = history;
+        exports.history = "history";
       });    
     }
  });
 }
-
-
