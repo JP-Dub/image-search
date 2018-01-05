@@ -6,9 +6,7 @@ var MongoClient = require('mongodb').MongoClient,
     app = express();
 
 
-
 exports.search = function(query) {
-  console.log(query, "query")
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
@@ -19,9 +17,10 @@ exports.search = function(query) {
     
     //collection.deleteMany();
     
-    if(query) { //!== "history"
+    if(query) {
       var date = new Date().toString();
-      // inserts the newly created short url with the queried url 
+      
+      // inserts the new query and current time into the db
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
         console.log("Mongo has saved the search parameter");
@@ -29,7 +28,7 @@ exports.search = function(query) {
       }); 
     } else {       
          
-      // returns search history and time from database     
+      // returns search history and time from db     
       collection.find( {}, {
                  projection : 
                    {_id: 0, Search: 1, Time: 1}
