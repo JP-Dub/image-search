@@ -27,8 +27,10 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-
-
+  if(mongo.search()) {
+    next();
+  }
+   console.log("wtf");
   res.json(mongo.history);
 });
 

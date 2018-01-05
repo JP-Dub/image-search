@@ -8,16 +8,16 @@ var MongoClient = require('mongodb').MongoClient,
 
 
 function storeHistory(obj) {
-  //console.log(obj)
+  console.log(obj, "obj")
   var history = obj;
   return history;
 };
 
-exports.history = storeHistory;
+
+
+module.exports.history = storeHistory();
 
 exports.search = function(query) {
-  
-console.log("then read this!");
   
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
@@ -29,7 +29,7 @@ console.log("then read this!");
     
     //collection.deleteMany();
     
-    if(query !== "repoLog") {
+    if(query) {
       var date = new Date().toString();
       
       // inserts the new query and current time into the db
