@@ -5,11 +5,10 @@ var MongoClient = require('mongodb').MongoClient,
     dbName = "urlDatabase",
     app = express();
 
+ 
 
 exports.search = function(query) {
-  
- app.get('/*', function(req, res, next) { 
-  console.log(req.params[0]);
+exports.history = history;  
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
@@ -42,22 +41,17 @@ exports.search = function(query) {
                  }, {
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
-        console.log("closing client");
+        //console.log("closing client");
         client.close();        
-        console.log("return the history, b", history[0]);
+        //console.log("return the history, b", history[0]);
       
-        
         //exports.history = "history";
         return history;        
       });    
     }
  });
-
-         
-         
-        res.send('Hello World');
-        });
 }
+         
 /*
 
 function callMongo(query) {

@@ -27,7 +27,8 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-  mongo.search("repoLog", function(err, history){
+  mongo.search("repoLog", function(err, history) {
+    console.log("success", err, history)
   if(err){
     return console.error(err, "error");
   }
@@ -35,7 +36,7 @@ app.get("/history", function (req, res, next) {
     return history;
   });
   
-  //res.json("nailed it");
+  res.json("nailed it");
 });
 
 // listen for requests 
