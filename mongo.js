@@ -4,14 +4,17 @@ var MongoClient = require('mongodb').MongoClient,
     assert = require('assert'),
     dbName = "urlDatabase",
     app = express();
-//var obj = {};
-console.log("read the page")
+
+console.log("read the page");
+
 exports.search = function(query) {
+  
 console.log("then read this!");
+  
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
-    console.log('Mongo connection established...');
+      console.log('Mongo connection established...');
   
     var db = client.db(dbName);  
     var collection = db.collection('history');
@@ -24,7 +27,7 @@ console.log("then read this!");
       // inserts the new query and current time into the db
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
-        console.log("Mongo has saved the search parameter");
+          console.log("Mongo has saved the search parameter");
         //client.close();          
       }); 
     }
@@ -42,7 +45,7 @@ console.log("then read this!");
         //console.log("closing client");
         var obj = history;
         client.close();        
-        console.log("return the history, b", history[0]);
+          console.log("return the history, b", history[0]);
       
         return history;        
       });    
