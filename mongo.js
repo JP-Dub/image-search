@@ -17,7 +17,7 @@ exports.search = function(query) {
     
     //collection.deleteMany();
     
-    if(query) {
+    if(query !== "repoLog") {
       var date = new Date().toString();
       
       // inserts the new query and current time into the db
@@ -41,7 +41,7 @@ exports.search = function(query) {
         assert.equal(err, null); 
         console.log("closing client");
         client.close();        
-        console.log("return the history, b");
+        console.log("return the history, b", history[0]);
         //exports.history = "history";
         return history;
         
