@@ -6,7 +6,7 @@ var MongoClient = require('mongodb').MongoClient,
     app = express();
 
 
-function search(query, next) {
+exports.search = function(query) {
 var obj;
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
@@ -42,19 +42,17 @@ var obj;
         //console.log("return the history, b", history); 
         obj = history; 
         if(obj.length === history.length) {
-          return "the dumb";
+          console.log("same length dog");
         }
-      });   
+      });     
+    
     console.log("closing the client db");
-    return "the dumb dumb";
     client.close();
  });
   
-  //return obj;
+  return obj;
 }
-//module.exports.search = search;        
-var dummy = search();
-console.log(dummy);
+
 /*
 
 exports.search = function(query) {
