@@ -85,7 +85,6 @@ function callMongo(query) {
         console.log("closing client");
         client.close();        
         console.log("return the history, b", history);
-        module.exports.history = "history";
         return history;        
       });    
     }
@@ -97,6 +96,7 @@ function callMongo(query) {
 module.exports.logSearch = callMongo;
 
 module.exports.showHistory = function(query) {
+  console.log(query)
   var results = callMongo(query);
   console.log("results fool", results);
   return results;

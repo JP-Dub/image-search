@@ -28,7 +28,6 @@ app.get("/search/*", function (req, res, next) {
 
 app.get("/history", function (req, res, next) {
   var what = mongo.showHistory("repoLog");
-  console.log(what)
   res.json("nailed it");
 });
 
