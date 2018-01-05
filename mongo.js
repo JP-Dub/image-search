@@ -5,7 +5,15 @@ var MongoClient = require('mongodb').MongoClient,
     dbName = "urlDatabase",
     app = express();
 
-console.log("read the page");
+
+
+function storeHistory(obj) {
+  //console.log(obj)
+  var history = obj;
+  return history;
+};
+
+exports.history = storeHistory;
 
 exports.search = function(query) {
   
@@ -43,11 +51,11 @@ console.log("then read this!");
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
         //console.log("closing client");
-        var obj = history;
+        storeHistory(history);
         client.close();        
-          console.log("return the history, b", history[0]);
+          //console.log("return the history, b", history[0]);
       
-        return history;        
+       // return history;        
       });    
     
  });

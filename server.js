@@ -29,7 +29,7 @@ app.get("/search/*", function (req, res, next) {
 app.get("/history", function (req, res, next) {
 
 
-  res.json(mongo.search("repoLog"));
+  res.json(mongo.history);
 });
 
 // listen for requests 
