@@ -8,6 +8,7 @@ var MongoClient = require('mongodb').MongoClient,
 
 
 exports.search = function(query) {
+  console.log(query, "query")
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
@@ -18,7 +19,7 @@ exports.search = function(query) {
     
     //collection.deleteMany();
     
-    if(query !== "history") {
+    if(query) { //!== "history"
       var date = new Date().toString();
       // inserts the newly created short url with the queried url 
       collection.insertOne({Search: query, Time: date}, function(err, results) {
@@ -40,8 +41,10 @@ exports.search = function(query) {
         assert.equal(err, null); 
         console.log("closing client");
         client.close();        
-        console.log("return the history, b", history);
-        exports.history = "history";
+        console.log("return the history, b");
+        //exports.history = "history";
+        return history;
+        
       });    
     }
  });
