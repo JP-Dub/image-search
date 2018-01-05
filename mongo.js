@@ -7,7 +7,7 @@ var MongoClient = require('mongodb').MongoClient,
 
 
 function search(query) {
-
+var obj;
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
@@ -40,13 +40,16 @@ function search(query) {
         assert.equal(err, null); 
         //console.log("closing client");       
         console.log("return the history, b", history); 
-        return history;      
-      });    
+        obj = history;      
+      });   
+    console.log("closing the client db");
     client.close();
  });
-
+  return obj;
 }
-module.exports.search = search;        
+//module.exports.search = search;        
+var dummy = search();
+console.log(dummy, "dummy");
 /*
 
 exports.search = function(query) {
