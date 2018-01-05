@@ -22,12 +22,12 @@ app.get("/", function (request, response) {
 
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0];
-  mongo.search(query);
+  mongo.logSearch(query);
   res.send(query);
 });
 
 app.get("/history", function (req, res, next) {
-  var what = mongo.search("repoLog");
+  var what = mongo.showHistory("repoLog");
   console.log(what)
   res.json("nailed it");
 });

@@ -1,4 +1,4 @@
-var MongoClient = require('mongodb').MongoClient,
+//var MongoClient = require('mongodb').MongoClient,
     mongoURL = process.env.MONGOLAB_URI,
     express = require('express'),
     assert = require('assert'),
@@ -39,7 +39,7 @@ function callMongo(query) {
         assert.equal(err, null); 
         console.log("closing client");
         client.close();        
-        console.log("return the history, b", history[0]);
+        console.log("return the history, b");
         //exports.history = "history";
         return history;        
       });    
@@ -49,4 +49,10 @@ function callMongo(query) {
 }
 
 
-exports.search = callMongo(query);
+module.exports.logSearch = callMongo();
+
+module.exports.showHistory = function() {
+  var results = callMongo();
+  console.log("results fool", results);
+  return results;
+}
