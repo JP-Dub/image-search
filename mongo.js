@@ -26,6 +26,7 @@ exports.search = function(query) {
         console.log("Mongo has saved the search parameter");
         client.close();          
       }); 
+      
     } else {       
          
       // returns search history and time from db     
