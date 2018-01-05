@@ -27,16 +27,9 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-  mongo.search("repoLog", function(err, history) {
-    console.log("success", err, history)
-  if(err){
-    return console.error(err, "error");
-  }
-    console.log(history);
-    return history;
-  });
-  
-  res.json("nailed it");
+
+
+  res.json(mongo.history);
 });
 
 // listen for requests 
