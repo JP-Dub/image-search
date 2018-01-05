@@ -9,6 +9,7 @@ var MongoClient = require('mongodb').MongoClient,
     dbName = "urlDatabase",
     app = express();
 var mongo = require('./mongo');
+var show = require('./show');
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -27,8 +28,8 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-  mongo.search(null);
-   console.log(mongo.search(null));
+  var wtf = show.history();
+   console.log(wtf);
   res.json("what?");
 });
 

@@ -27,7 +27,7 @@ function search(query) {
     var db = client.db(dbName);  
     var collection = db.collection('history');
     
-    //collection.deleteMany();
+    //collection.deleteMany({Search:null});
     
     if(query) {
       var date = new Date().toString();
@@ -51,9 +51,9 @@ function search(query) {
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
         //console.log("closing client");
-        storeHistory(history);
+        //storeHistory(history);
         client.close();        
-          //console.log("return the history, b", history[0]);
+          console.log("return the history, b", history);
        
         return history;        
       });    

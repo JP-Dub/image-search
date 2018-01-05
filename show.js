@@ -1,4 +1,3 @@
-/*
 var MongoClient = require('mongodb').MongoClient,
     mongoURL = process.env.MONGOLAB_URI,
     express = require('express'),
@@ -7,27 +6,18 @@ var MongoClient = require('mongodb').MongoClient,
     app = express();
 
 
-function callMongo(query) {
+function history() {
+  
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
-    console.log('Mongo connection established...');
+      console.log('Mongo connection established...');
   
     var db = client.db(dbName);  
     var collection = db.collection('history');
     
-    //collection.deleteMany();
-    
-    if(query !== "repoLog") {
-      var date = new Date().toString();      
-      // inserts the new query and current time into the db
-      collection.insertOne({Search: query, Time: date}, function(err, results) {
-        assert.equal(err, null);
-        console.log("Mongo has saved the search parameter");
-        client.close();          
-      }); 
-      
-    } else {                
+    //collection.deleteMany({Search:null});
+           
       // returns search history and time from db     
       collection.find( {}, {
                  projection : 
@@ -38,23 +28,15 @@ function callMongo(query) {
                  }, {
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
-        console.log("closing client");
+        //console.log("closing client");
+        //storeHistory(history);
         client.close();        
-        console.log("return the history, b");
-        //exports.history = "history";
+          //console.log("return the history, b", history);
+       
         return history;        
       });    
-    }
     
  });
 }
 
-
-module.exports.logSearch = callMongo();
-
-module.exports.showHistory = function() {
-  var results = callMongo();
-  console.log("results fool", results);
-  return results;
-}
-*/
+module.exports.history = history;
