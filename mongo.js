@@ -43,6 +43,7 @@ var obj;
         obj = history; 
         if(obj.length === history.length) {
           console.log("same length dog");
+          return obj;
         }
       });     
     
@@ -50,7 +51,7 @@ var obj;
     client.close();
  });
   
-  return obj;
+  //return obj;
 }
 
 /*
