@@ -6,7 +6,7 @@ var MongoClient = require('mongodb').MongoClient,
     app = express();
 
 
-exports.search = function(query) {
+function callMongo(query) {
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
@@ -18,8 +18,7 @@ exports.search = function(query) {
     //collection.deleteMany();
     
     if(query !== "repoLog") {
-      var date = new Date().toString();
-      
+      var date = new Date().toString();      
       // inserts the new query and current time into the db
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
@@ -27,8 +26,7 @@ exports.search = function(query) {
         client.close();          
       }); 
       
-    } else {       
-         
+    } else {                
       // returns search history and time from db     
       collection.find( {}, {
                  projection : 
@@ -46,5 +44,9 @@ exports.search = function(query) {
         return history;        
       });    
     }
+    
  });
 }
+
+
+exports.search = callMongo(query);
