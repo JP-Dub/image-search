@@ -6,17 +6,6 @@ var MongoClient = require('mongodb').MongoClient,
     app = express();
 
 
-
-function storeHistory(obj) {
-  //console.log(obj, "obj")
-  var history = obj;
-  return history;
-};
-
-
-
-module.exports.history = storeHistory();
-
 function search(query) {
   
 // Use connect method to connect to the Server
@@ -51,10 +40,13 @@ function search(query) {
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
         //console.log("closing client");
-        //storeHistory(history);
-        client.close();        
-          console.log("return the history, b", history);
-       
+              
+        console.log("return the history, b", history);
+        if (history.length > 0) {
+          for(var i = 0; i < history.length; i++) {
+            var obj
+          
+        client.close(); 
         return history;        
       });    
     
