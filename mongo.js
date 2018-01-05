@@ -8,7 +8,7 @@ var MongoClient = require('mongodb').MongoClient,
 
 
 function storeHistory(obj) {
-  console.log(obj, "obj")
+  //console.log(obj, "obj")
   var history = obj;
   return history;
 };
@@ -17,7 +17,7 @@ function storeHistory(obj) {
 
 module.exports.history = storeHistory();
 
-exports.search = function(query) {
+function search(query) {
   
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
@@ -54,14 +54,14 @@ exports.search = function(query) {
         storeHistory(history);
         client.close();        
           //console.log("return the history, b", history[0]);
-      
-       // return history;        
+       
+        return history;        
       });    
     
  });
 }
 
-        
+module.exports.search = search;        
 /*
 
 exports.search = function(query) {
