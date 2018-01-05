@@ -18,10 +18,9 @@ function search(query) {
     
     //collection.deleteMany({Search:null});
     
-    if(query) {
-      var date = new Date().toString();
-      
+    if(query) {  
       // inserts the new query and current time into the db
+      var date = new Date().toString();
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
           console.log("Mongo has saved the search parameter");
@@ -40,13 +39,8 @@ function search(query) {
                  limit : 10 }).toArray(function(err, history) {
         assert.equal(err, null); 
         //console.log("closing client");
-              
-        console.log("return the history, b", history);
-        if (history.length > 0) {
-          for(var i = 0; i < history.length; i++) {
-            var obj
-          
-        client.close(); 
+        client.close();
+        //console.log("return the history, b", history); 
         return history;        
       });    
     

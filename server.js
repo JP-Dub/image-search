@@ -1,15 +1,15 @@
 'use strict';
 // init project
-
-var MongoClient = require('mongodb').MongoClient,
-    mongoURL = process.env.MONGOLAB_URI,
+var mongo = require('./mongo'),
+//var MongoClient = require('mongodb').MongoClient,
+  //  mongoURL = process.env.MONGOLAB_URI,
     //validUrl = require('valid-url'),
+   // assert = require('assert'),
+   // dbName = "urlDatabase",
     express = require('express'),
-    assert = require('assert'),
-    dbName = "urlDatabase",
     app = express();
-var mongo = require('./mongo');
-var show = require('./show');
+
+
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -28,8 +28,8 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-  var wtf = show.history();
-   console.log(wtf);
+  var wtf = mongo.search(null);
+   console.log(wtf, "wtf");
   res.json("what?");
 });
 
