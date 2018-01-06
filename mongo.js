@@ -57,7 +57,12 @@ var obj;
   //return obj;
 }
 
-
+exports.history = function() {
+  search(null, callback) {
+    
+  }
+  
+}
 
 module.exports.search = search;
 
