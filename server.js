@@ -1,12 +1,7 @@
 'use strict';
 // init project
-var mongo = require('./mongo'),
-//var MongoClient = require('mongodb').MongoClient,
-  //  mongoURL = process.env.MONGOLAB_URI,
-    //validUrl = require('valid-url'),
-   // assert = require('assert'),
-   // dbName = "urlDatabase",
-    express = require('express'),
+
+ var express = require('express'),
     app = express();
 
 
@@ -30,11 +25,11 @@ app.get("/search/*", function (req, res) {
 });
 
 app.get("/:history", function (req, res) {
- var history = req.params.history;
+// var history = req.params.history;
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
    
-   res.status(202).json(results);
+   res.status(202).json(results.reverse());
 });
   
    //console.log(wtf, "wtf");
