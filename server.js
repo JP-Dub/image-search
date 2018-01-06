@@ -33,6 +33,7 @@ app.get("/:history", function (req, res) {
  var history = req.params.history;
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
+   
    res.status(202).json(results);
 });
   
