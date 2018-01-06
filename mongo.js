@@ -40,14 +40,8 @@ var obj;
         assert.equal(err, null); 
         //console.log("closing client");       
         //console.log("return the history, b", history); 
-        app.use('/history', function(res) {
-          res.json(history)
-        });
-        obj = history; 
-        if(obj.length === history.length) {
-          console.log("same length dog");
-          return obj;
-        }
+        
+        return history;
       });     
     
     console.log("closing the client db");
@@ -58,9 +52,11 @@ var obj;
 }
 
 exports.history = function() {
-  search(null, callback) {
-    
-  }
+  app.use(search(), function(err, history) {
+      if (err) return console.error(err);
+    console.log(history);
+      return history;
+  });
   
 }
 
