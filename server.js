@@ -21,14 +21,14 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/search/*", function (req, res, next) {
+app.get("/search/*", function (req, res) {
   var query = req.params[0];
   mongo.search(query);
   res.send(query);
 });
 
-app.get("/history", function (req, res, next) {
- 
+app.get("/history", function (req, res) {
+ var history = 
   mongo.search(null, function callback(err, results) { 
     if(err) {
       return console.error(err);
