@@ -29,10 +29,13 @@ app.get("/search/*", function (req, res, next) {
 
 app.get("/history", function (req, res, next) {
  
-  mongo.search(null, callback); 
-      console.log();
-      res.json();
+  mongo.search(null, function callback(err, results) { 
+    if(err) {
+      return console.error(err);
+    }
     
+    res.json(results);
+});
   
    //console.log(wtf, "wtf");
  // res.json("what?");

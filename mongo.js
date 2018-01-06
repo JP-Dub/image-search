@@ -37,18 +37,12 @@ var obj;
                    {Time: -1}
                  }, {
                  limit : 10 }).toArray(function(err, history) {
-        assert.equal(err, null); 
-        //console.log("closing client");       
-        //console.log("return the history, b", history); 
-        console.log(history);
-        callback = history;
+        assert.equal(err, null);  
+        callback(null, history);
       });     
     
-    console.log("closing the client db");
     client.close();
  });
-  
-  //return obj;
 }
 
 
