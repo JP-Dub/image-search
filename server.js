@@ -23,16 +23,16 @@ app.get("/", function (request, response) {
 
 app.get("/search/*", function (req, res) {
   var query = req.params[0];
-  mongo.search(query);
-  res.send(query);
+  mongo.search(query, function(err, results) {
+  if(err) return console.error(err);
+    res.send(query);
+  });
 });
 
-app.get("/history", function (req, res) {
- var history = 
+app.get("/:history", function (req, res) {
+ var history = req.params.history;
   mongo.search(null, function callback(err, results) { 
-    if(err) {
-      return console.error(err);
-    }
+    if(err) return console.error(err);
    res.status(202).json(results);
 });
   

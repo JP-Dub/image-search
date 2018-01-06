@@ -7,7 +7,7 @@ var MongoClient = require('mongodb').MongoClient,
 
 
 function search(query, callback) {
-var obj;
+
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
@@ -23,8 +23,7 @@ var obj;
       var date = new Date().toString();
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
-          console.log("Mongo has saved the search parameter");
-        //client.close();          
+          console.log("Mongo has saved the search parameter");         
       }); 
     }
               
@@ -45,10 +44,7 @@ var obj;
  });
 }
 
-
 module.exports.search = search;
-
-
 
 /*
 
