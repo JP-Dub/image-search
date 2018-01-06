@@ -28,9 +28,14 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/history", function (req, res, next) {
-  var wtf = mongo.history();
-   console.log(wtf, "wtf");
-  res.json("what?");
+ 
+  mongo.search(null, callback); 
+      console.log();
+      res.json();
+    
+  
+   //console.log(wtf, "wtf");
+ // res.json("what?");
 });
 
 // listen for requests 
