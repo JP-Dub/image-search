@@ -27,19 +27,13 @@ app.get("/search/*", function (req, res, next) {
   res.send(query);
 });
 
-app.use("/history", function (req, res, next) {
+app.get("/history", function (req, res, next) {
  
   mongo.search(null, function callback(err, results) { 
     if(err) {
       return console.error(err);
     }
-    var obj;
-    for(var i = 0; i < results.length; i++) {
-      obj = results[i;
-      
-    }
-    
-    res.json(obj);
+   res.status(202).json(results);
 });
   
    //console.log(wtf, "wtf");
