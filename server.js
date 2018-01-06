@@ -1,7 +1,7 @@
 'use strict';
 // init project
-
- var express = require('express'),
+var mongo = require('./mongo'),
+    express = require('express'),
     app = express();
 
 
