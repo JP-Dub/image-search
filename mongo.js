@@ -29,14 +29,16 @@ function search(query, callback) {
               
       // returns search history and time from db     
       collection.find( {}, {
-                 projection : 
-                   {_id: 0, Search: 1, Time: 1}
+                 limit: 10
                  }, { 
-                 sort : 
+                 sort:
                    {Time: -1}
                  }, {
-                 limit : 10 }).toArray(function(err, history) {
+                 projection : 
+                   {_id: 0, Search: 1, Time: 1}               
+        }).toArray(function(err, history) {
         assert.equal(err, null);  
+        console.log(history.length)
         callback(null, history);
       });     
     
