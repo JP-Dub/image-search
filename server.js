@@ -26,12 +26,12 @@ app.get("/search/*", function (req, res) {
 app.get("/:history", function (req, res) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
-   h
-   res.status(202).json(results.reverse());
-});
-  
-   //console.log(wtf, "wtf");
- // res.json("what?");
+    var history = [];
+    for(var i = 0; i < results.length; i++) {
+      history.push(JSON.stringify(results[i]) + '<br>');
+    }
+    res.status(202).json(history.reverse());
+  }); 
 });
 
 // listen for requests 
@@ -39,6 +39,7 @@ var listener = app.listen(process.env.PORT, function () {
   console.log('Your app is listening on port ' + listener.address().port);
 });
 
+  
 /*
 app.get("/search/*", function (req, res, next) {
   var url = req.params[0];

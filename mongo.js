@@ -5,7 +5,7 @@ var MongoClient = require('mongodb').MongoClient,
     //express = require('express'),
     //app = express();
 
-function search(query, callback) {
+exports.search = function(query, callback) {
 
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
@@ -39,4 +39,4 @@ function search(query, callback) {
  });
 }
 
-module.exports.search = search;
+//module.exports.search = search;
