@@ -4,7 +4,6 @@ var mongo = require('./mongo'),
     express = require('express'),
     app = express();
 
-
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 

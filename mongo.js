@@ -1,9 +1,9 @@
 var MongoClient = require('mongodb').MongoClient,
     mongoURL = process.env.MONGOLAB_URI,
-    express = require('express'),
     assert = require('assert'),
-    dbName = "urlDatabase",
-    app = express();
+    dbName = "urlDatabase";
+    //express = require('express'),
+    //app = express();
 
 function search(query, callback) {
 
@@ -20,7 +20,7 @@ function search(query, callback) {
     if(query) {  
       // inserts the new query and current time into the db
       var date = new Date().toString();
-      collection.insertOne({Search: query, Time: date}, function(err, results) {
+      collection.insertOne({Search: query, Time: date}, '\\n', function(err, results) {
         assert.equal(err, null);
           console.log("Mongo has saved the search parameter");         
       }); 
