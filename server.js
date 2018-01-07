@@ -26,11 +26,7 @@ app.get("/search/*", function (req, res) {
 app.get("/:history", function (req, res) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
-    var history = [];
-    for(var i = 0; i < results.length; i++) {
-      history.push(JSON.stringify(results[i]) + '<br>');
-    }
-    res.status(202).json(history.reverse());
+    res.status(202).json(results.reverse());
   }); 
 });
 
