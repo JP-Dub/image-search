@@ -20,7 +20,7 @@ function search(query, callback) {
     if(query) {  
       // inserts the new query and current time into the db
       var date = new Date().toString();
-      collection.insertOne({Search: query, Time: date}, '\\n', function(err, results) {
+      collection.insertOne({Search: query, Time: date}, '<br>', function(err, results) {
         assert.equal(err, null);
           console.log("Mongo has saved the search parameter");         
       }); 
