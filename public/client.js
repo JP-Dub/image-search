@@ -1,10 +1,13 @@
 var server = require('./server');
 
 var results = server.results
-for(var i = 0; i < results.length; i++) {
-  $("#dhistory").append("<li>"+ JSON.stringify(results[i]) + "</li>");
-}
 
+exports.latest = function() {
+for(var i = 0; i < results.length; i++) {
+  $("#history").append("<p>"+ JSON.stringify(results[i]) + "</p>");
+  console.log("fool");
+}
+}
 /*
 $(function() {
   console.log('hello world :o');

@@ -1,5 +1,6 @@
 'use strict';
 // init project
+var client = require('./client');
 var apiKEY = "&key=" + process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
     mongo = require('./mongo'),
@@ -39,7 +40,9 @@ app.get("/history", function (req, res) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
     exports.results = results;
-    res.json(results.reverse());
+    res.sendFile(__dirname + '/views/history.html');
+    
+    //res.json(results.reverse());
   }); 
 });
 
