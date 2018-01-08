@@ -23,10 +23,10 @@ app.get("/search/*", function (req, res) {
   });
 });
 
-app.get("/history", function (req, res) {
+app.get("/history", function (req, res, next) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
-    res.status(200).json(results.reverse());
+    res.json(results.reverse());
   }); 
 });
 
