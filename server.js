@@ -10,8 +10,6 @@ var apiKEY = process.env.API_KEY,
     express = require('express'),
     app = express();
     
-
-
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -25,6 +23,7 @@ app.get("/", function (request, response) {
 
 
 app.get("/search/*", function (req, res) {
+  res.sendFile(__dirname + '/views/postsearch.html');
   var query = req.params[0];
   console.log("query", query)
   mongo.search(query, function(err, results) {
@@ -33,7 +32,7 @@ app.get("/search/*", function (req, res) {
   });
   var url = http + apiKEY + cxENG + "&q=" + query + options;
   console.log("url" , url)
-   res.redirect(url)
+   //res.redirect(url)
 });
     
 // post results of last 10 searches
