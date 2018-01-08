@@ -1,7 +1,7 @@
 'use strict';
 // init project
-var query;
-var http = "https://www.googleapis.com/customsearch/v1?key=apiKEY&cx=cxENG&q=" + query;
+//var query;
+var http = "https://www.googleapis.com/customsearch/v1?key=apiKEY&cx=cxENG&q=";
 var apiKEY = process.env.API_KEY,
     cxENG = process.env.CX_ENG,
     mongo = require('./mongo'),
@@ -21,20 +21,29 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/search/*", function (req, res, next) {
-  query = req.params[0];
+
+function next(query) {
+  var http = http + query;
+  app.get(http, function(req, res, next) {
+  
+  var reason = req.params[0];
+  console.log(reason);
+  res.send("what?");
+});
+}
+
+app.get("/search/*", function (req, res) {
+  var query = req.params[0];
   mongo.search(query, function(err, results) {
   if(err) return console.error(err);
     console.log("saved: ", query);
-    next();
+    if (results) {
+    next(query);
+    }
   });
 });
     
-app.get(http, function (req, res, next) {
-    var reason = req.params[0];
-      console.log(reason);
-      res.json("what?");
-    });
+
   
 
 
