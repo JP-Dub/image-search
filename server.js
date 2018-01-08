@@ -28,18 +28,19 @@ app.get("/search/*", function (req, res) {
   var https = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
   //res.sendFile(__dirname + '/views/postsearch.html');
   mongo.search(query, function(err, results) {
-  if(err) return console.error(err);
+    if(err) return console.error(err);
     console.log("saved: ", query);  
   });
 
-   res.redirect(https)
+  res.redirect(https);
 });
     
 // post results of last 10 searches
 app.get("/history", function (req, res, next) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
-    res.json(results.reverse());
+    //res.json(results.reverse());
+     res.render('history');
   }); 
 });
 

@@ -1,4 +1,47 @@
-<h3>
-  Search history for last 10 searches
-</h3>
-<
+<!DOCTYPE html>
+<html lang = "en"> 
+   <head>
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta charset = "utf-8">     
+     <title>Backend Challenges | Free Code Camp</title>
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+      <link href="/public/style.css" rel="stylesheet" type="text/css">
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <meta charset = "UTF-8"/>
+   </head>   
+   <body>
+      <div class="container">
+        <header>API Basejump: <em>Search History</em></header><br>
+        <!--<article>
+        <p>User stories:</p>
+          <p class="user">1) I can get the image URLs, alt text and page urls for a set of images relating to a given search string.<br> 2) I can paginate through the responses by adding, <em><mark>?offset=2</mark>
+            </em>, parameter to the end of the URL.<br> 3) I can get a list of the most recently submitted search strings.</p>
+        </article>-->
+          <footer>
+          <p class="example">
+            Example creation usage:
+          </p>
+            <p><mark>https://imaginary-bank.glitch.me/search/</mark>[your search term]</p>
+            <p><mark>https://imaginary-bank.glitch.me/search/</mark>[your search term]<mark>?offset=</mark>[a number to paginate]</p>           
+          <p class="example">
+            Example search usage:
+          </p>
+          <p><mark>
+            https://imaginary-bank.glitch.me/search/presidents?offset=10</mark></p>
+          <p class="example">
+            Example output:
+          </p>
+            <p><mark>{ "image_title": "some random image", "image_url": <a href="">https://www.somewebsite.com/randomimage.jpg"</a> }</mark></p>            
+          <p class="example">
+            View search history:
+          </p>
+          <p><mark>https://imaginary-bank.glitch.me/history</mark></p>
+            </footer>
+      </div>
+     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <script src="/client.js"></script>
+   </body>
+</html>
+
+
+
