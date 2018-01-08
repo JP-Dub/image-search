@@ -1,8 +1,8 @@
 'use strict';
 // init project
-var http = "https://www.googleapis.com/customsearch/v1?key=",
+/*var http = "https://www.googleapis.com/customsearch/v1?key=",
     offset = 10,
-    options = "&num=10&c2coff=1&start=" + offset;//&hl=en&gl=us&cr=countryUS&searchType=image&siteSearch=items%5B%5D.title%2C%20items%5B%5D.link%2C%20items%5B%5D.imag";
+    options = "&num=10&c2coff=1&start=" + offset;*///&hl=en&gl=us&cr=countryUS&searchType=image&siteSearch=items%5B%5D.title%2C%20items%5B%5D.link%2C%20items%5B%5D.imag";
 var apiKEY = process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
     mongo = require('./mongo'),
@@ -27,11 +27,14 @@ app.get("/", function (request, response) {
 
 
 app.get("/search/*", function (req, res) {
-  var http = "https://www.googleapis.com/customsearch/v1?key=",
-      offset = 10,
-      options = "&num=10&c2coff=1&start=" + offset 
-  var query = req.params[0];
+  var query = req.params[0],
       offset = req.param('offset');
+      if(!offset) {     
+        offset = 10;
+      }
+  //https://www.googleapis.com/customsearch/v1?q=
+  var http = "https://www.googleapis.com/customsearch/v1?key=" + apiKEY + cxENG,
+      options = "&num=10&c2coff=1&start=" + offset; 
   //res.sendFile(__dirname + '/views/postsearch.html');
   mongo.search(query, function(err, results) {
   if(err) return console.error(err);
@@ -39,7 +42,7 @@ app.get("/search/*", function (req, res) {
   });
   var url = http + apiKEY + cxENG + "&q=" + query + options;
   //console.log("url" , url)
-   //res.redirect(url)
+   res.redirect(url)
 });
     
 // post results of last 10 searches
