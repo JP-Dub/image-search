@@ -2,7 +2,7 @@
 // init project
 var query;
 var http = "https://www.googleapis.com/customsearch/v1?key=",
-    offset = 40,
+    offset = 10,
     options = "&num=10&c2coff=1&start=" + offset;//&hl=en&gl=us&cr=countryUS&searchType=image&siteSearch=items%5B%5D.title%2C%20items%5B%5D.link%2C%20items%5B%5D.imag";
 var apiKEY = process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
