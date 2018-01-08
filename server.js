@@ -30,7 +30,7 @@ app.get("/search/*", function (req, res) {
   if(err) return console.error(err);
     console.log("saved: ", query);  
   });
-  var url = http + apiKEY + cxENG + "?q=" + query;
+  var url = http + apiKEY + cxENG + "&q=" + query;
   console.log("url" , url)
    res.redirect(http)
 });
