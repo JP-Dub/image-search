@@ -22,7 +22,8 @@ exports.search = function(query, callback) {
       var date = new Date().toString();
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
-          console.log("MongoDB log: {Search: " + query + " , Time: " + date);         
+          //console.log("MongoDB log: {Search: " + query + " , Time: " + date);   
+        console.log(results)
       }); 
     }
               
@@ -32,7 +33,8 @@ exports.search = function(query, callback) {
       limit: 10,
       projection : {_id: 0, Search: 1, Time: 1}
       }).toArray(function(err, history) {
-        assert.equal(err, null);               
+        assert.equal(err, null);  
+        //console.log(history)
         callback(null, history);
     });     
   client.close();
