@@ -20,7 +20,7 @@ exports.search = function(query, callback) {
     if(query) {  
       // inserts the new query and current time into the db
       var t = new Date().toString(),
-          date = t.replace(/(GMT|UTC)(-|\+)\d{0,4}/g, "");
+          date = t.replace(/(GMT|UTC)(-|\+)\d{0,4}\s+/g, "");
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
           console.log("MongoDB log: {Search: " + query + " , Time: " + date);   
