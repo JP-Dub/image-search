@@ -1,6 +1,5 @@
 'use strict';
 // init project
-var query;
 var http = "https://www.googleapis.com/customsearch/v1?key=",
     offset = 10,
     options = "&num=10&c2coff=1&start=" + offset;//&hl=en&gl=us&cr=countryUS&searchType=image&siteSearch=items%5B%5D.title%2C%20items%5B%5D.link%2C%20items%5B%5D.imag";
@@ -10,9 +9,9 @@ var apiKEY = process.env.API_KEY,
     express = require('express'),
     app = express();
 
-var url = require('url');
-var myURL = url.parse("https://imaginary-bank.glitch.me/search/cars?offset=2");
-console.log(myURL)
+//var url = require('url');
+//var myURL = url.parse("https://imaginary-bank.glitch.me/search/cars?offset=2");
+//console.log(myURL)
 
     
 // http://expressjs.com/en/starter/static-files.html
@@ -28,16 +27,18 @@ app.get("/", function (request, response) {
 
 
 app.get("/search/*", function (req, res) {
-  res.sendFile(__dirname + '/views/postsearch.html');
+  var http = "https://www.googleapis.com/customsearch/v1?key=",
+      offset = 10,
+      options = "&num=10&c2coff=1&start=" + offset 
   var query = req.params[0];
-  console.log(req.params)
-  console.log("query", query)
+      offset = req.param('offset');
+  //res.sendFile(__dirname + '/views/postsearch.html');
   mongo.search(query, function(err, results) {
   if(err) return console.error(err);
     console.log("saved: ", query);  
   });
   var url = http + apiKEY + cxENG + "&q=" + query + options;
-  console.log("url" , url)
+  //console.log("url" , url)
    //res.redirect(url)
 });
     

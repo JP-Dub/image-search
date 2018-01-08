@@ -35,7 +35,6 @@ exports.search = function(query, callback) {
       projection : {_id: 0, Search: 1, Time: 1}
       }).toArray(function(err, history) {
         assert.equal(err, null);  
-        console.log(history)
         callback(null, history);
     });     
   client.close();
