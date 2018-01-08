@@ -1,9 +1,9 @@
 'use strict';
 // init project
-var query;
-var http = "https://www.googleapis.com/customsearch/v1?key=apiKEY&cx=cxENG&q=" + query;
+var query =  "&q=";
+var http = "https://www.googleapis.com/customsearch/v1?key=";
 var apiKEY = process.env.API_KEY,
-    cxENG = process.env.CX_ENG,
+    cxENG = "&cx=" + process.env.CX_ENG,
     mongo = require('./mongo'),
     express = require('express'),
     app = express();
@@ -24,7 +24,9 @@ app.get("/", function (request, response) {
 
 
 app.get("/search/*", function (req, res) {
-  var query = req.params[0];
+  var query =+ req.params[0];
+  var http =+ apiKEY + cxENG + query;
+  console.log(http)
   mongo.search(query, function(err, results) {
   if(err) return console.error(err);
     //console.log("saved: ", query);
