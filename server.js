@@ -25,7 +25,8 @@ app.get("/search/*", function (req, res) {
   if(err) return console.error(err);
     var http = "https://www.googleapis.com/customsearch/v1?key=apiKEY&cx=cxENG&q=" + query;
     app.get(http, function (req, res) {
-      if
+      if(err) return console.error(err);
+      res.
     });
   });
 });
