@@ -1,9 +1,10 @@
+var server = require('./server');
 
-$(function() {
-$.get('/history', function(history) {
-console.log(history)
-});
-});
+var results = server.results
+for(var i = 0; i < results.length; i++) {
+  $("#dhistory").append("<li>"+ JSON.stringify(results[i]) + "</li>");
+}
+
 /*
 $(function() {
   console.log('hello world :o');
