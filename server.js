@@ -2,7 +2,7 @@
 // init project
 var query;
 var http = "https://www.googleapis.com/customsearch/v1?key=",
-    options = "&num=10&start=40&linkSite=0&hl=en&c2coff=1&gl=us&cr=countryUS";//&searchType=image&siteSearch=items%5B%5D.title%2C%20items%5B%5D.link%2C%20items%5B%5D.imag";
+    options = "&num=10&start=40&c2coff=1";//&hl=en&gl=us&cr=countryUS&searchType=image&siteSearch=items%5B%5D.title%2C%20items%5B%5D.link%2C%20items%5B%5D.imag";
 var apiKEY = process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
     mongo = require('./mongo'),
