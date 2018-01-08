@@ -23,12 +23,15 @@ app.get("/search/*", function (req, res) {
   var query = req.params[0];
   mongo.search(query, function(err, results) {
   if(err) return console.error(err);
+    console.log("saved: ", query);
+  });
     var http = "https://www.googleapis.com/customsearch/v1?key=apiKEY&cx=cxENG&q=" + query;
     app.get(http, function (req, res) {
-      if(err) return console.error(err);
-      res.
+      var reason = req.params[0];
+      console.log(reason);
+      res.json("what?");
     });
-  });
+  
 });
 
 app.get("/history", function (req, res, next) {
