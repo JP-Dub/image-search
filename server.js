@@ -1,8 +1,12 @@
 'use strict';
 // init project
-var mongo = require('./mongo'),
+var apiKEY = process.env.API_KEY,
+    cxENG = process.env.CX_ENG,
+    mongo = require('./mongo'),
     express = require('express'),
     app = express();
+
+
 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -19,7 +23,10 @@ app.get("/search/*", function (req, res) {
   var query = req.params[0];
   mongo.search(query, function(err, results) {
   if(err) return console.error(err);
-    res.send(query);
+    var http = "https://www.googleapis.com/customsearch/v1?key=apiKEY&cx=cxENG&q=" + query;
+    app.get(http, function (req, res) {
+      if
+    });
   });
 });
 
