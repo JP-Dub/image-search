@@ -30,9 +30,9 @@ app.get("/search/*", function (req, res) {
   if(err) return console.error(err);
     console.log("saved: ", query);  
   });
-  var url = http + apiKEY + cxENG + "&q=" + "gangsters" + "&num=10&start=1&linkSite=yes";
+  var url = http + apiKEY + cxENG + "&q=" + query + "&num=10&start=10&linkSite=0&hl=en&c2coff=1&gl=us";
   console.log("url" , url)
-   res.redirect(http)
+   res.redirect(url)
 });
     
 
