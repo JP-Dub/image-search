@@ -38,9 +38,7 @@ app.get("/search/*", function (req, res) {
 app.get("/history", function (req, res) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
-    res.type('json');
-    res.sendFile(resul;
-    res.end();
+    res.json(results.reverse());
   }); 
 });
 
