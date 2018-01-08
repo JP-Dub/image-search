@@ -9,6 +9,11 @@ var apiKEY = process.env.API_KEY,
     mongo = require('./mongo'),
     express = require('express'),
     app = express();
+
+var url = require('url');
+var myURL = url.parse("https://imaginary-bank.glitch.me/search/cars?offset=2");
+console.log(myURL)
+
     
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -25,6 +30,7 @@ app.get("/", function (request, response) {
 app.get("/search/*", function (req, res) {
   res.sendFile(__dirname + '/views/postsearch.html');
   var query = req.params[0];
+  console.log(req.params)
   console.log("query", query)
   mongo.search(query, function(err, results) {
   if(err) return console.error(err);

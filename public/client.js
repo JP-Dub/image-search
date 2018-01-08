@@ -8,6 +8,8 @@ var apiKEY = process.env.API_KEY,
     express = require('express'),
     app = express();
 
+
+
 app.get("/search/*", function (req, res) {
   res.sendFile(__dirname + '/views/postsearch.html');
   var query = req.params[0];
