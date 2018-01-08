@@ -15,15 +15,15 @@ exports.search = function(query, callback) {
     var db = client.db(dbName);  
     var collection = db.collection('history');
     
-    //collection.deleteMany({Search:null});
+    //collection.deleteMany();//{Search:null});
     
     if(query) {  
       // inserts the new query and current time into the db
       var date = new Date().toString();
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
-          //console.log("MongoDB log: {Search: " + query + " , Time: " + date);   
-        console.log(results)
+          console.log("MongoDB log: {Search: " + query + " , Time: " + date);   
+        //console.log(results)
       }); 
     }
               
@@ -34,7 +34,7 @@ exports.search = function(query, callback) {
       projection : {_id: 0, Search: 1, Time: 1}
       }).toArray(function(err, history) {
         assert.equal(err, null);  
-        //console.log(history)
+        console.log(history)
         callback(null, history);
     });     
   client.close();
