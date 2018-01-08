@@ -2,7 +2,8 @@
 // init project
 var query;
 var http = "https://www.googleapis.com/customsearch/v1?key=",
-    options = "&num=10&start=40&c2coff=1";//&hl=en&gl=us&cr=countryUS&searchType=image&siteSearch=items%5B%5D.title%2C%20items%5B%5D.link%2C%20items%5B%5D.imag";
+    offset = 40,
+    options = "&num=10&c2coff=1&start=" + offset;//&hl=en&gl=us&cr=countryUS&searchType=image&siteSearch=items%5B%5D.title%2C%20items%5B%5D.link%2C%20items%5B%5D.imag";
 var apiKEY = process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
     mongo = require('./mongo'),
@@ -23,7 +24,6 @@ app.get("/", function (request, response) {
 });
 
 
-//&num={count?}&start={startIndex?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
 app.get("/search/*", function (req, res) {
   var query = req.params[0];
   console.log("query", query)
