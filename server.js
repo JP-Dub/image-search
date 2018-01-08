@@ -1,11 +1,13 @@
 'use strict';
 // init project
+var query;
+var http = "https://www.googleapis.com/customsearch/v1?key=apiKEY&cx=cxENG&q=" + query;
 var apiKEY = process.env.API_KEY,
     cxENG = process.env.CX_ENG,
     mongo = require('./mongo'),
     express = require('express'),
     app = express();
-
+    
 
 
 // http://expressjs.com/en/starter/static-files.html
@@ -19,20 +21,22 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-app.get("/search/*", function (req, res) {
-  var query = req.params[0];
+app.get("/search/*", function (req, res, next) {
+  query = req.params[0];
   mongo.search(query, function(err, results) {
   if(err) return console.error(err);
     console.log("saved: ", query);
+    next();
   });
-    var http = "https://www.googleapis.com/customsearch/v1?key=apiKEY&cx=cxENG&q=" + query;
-    app.get(http, function (req, res) {
-      var reason = req.params[0];
+});
+    
+app.get(http, function (req, res, next) {
+    var reason = req.params[0];
       console.log(reason);
       res.json("what?");
     });
   
-});
+
 
 app.get("/history", function (req, res, next) {
   mongo.search(null, function callback(err, results) { 

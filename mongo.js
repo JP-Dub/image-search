@@ -22,7 +22,7 @@ exports.search = function(query, callback) {
       var date = new Date().toString();
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
-          console.log("Mongo has captured the search query");         
+          console.log("MongoDB log: {Search :" + query + " Time: " + date);         
       }); 
     }
               
