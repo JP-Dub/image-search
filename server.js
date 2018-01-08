@@ -1,6 +1,6 @@
 'use strict';
 // init project
-var query =  "&q=";
+var query;
 var http = "https://www.googleapis.com/customsearch/v1?key=";
 var apiKEY = process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
@@ -24,16 +24,15 @@ app.get("/", function (request, response) {
 
 
 app.get("/search/*", function (req, res) {
-  var query =+ req.params[0];
-  var http =+ apiKEY + cxENG + query;
-  console.log(http)
+  var query = req.params[0];
+  console.log("query", query)
   mongo.search(query, function(err, results) {
   if(err) return console.error(err);
-    //console.log("saved: ", query);
-    if (results) {
-    res.redirect(http)
-    }
+    console.log("saved: ", query);  
   });
+  var url = http + apiKEY + cxENG + "?q=" + query;
+  console.log("url" , url)
+   res.redirect(http)
 });
     
 
