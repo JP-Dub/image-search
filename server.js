@@ -36,11 +36,11 @@ app.get("/search/*", function (req, res) {
 });
     
 // post results of last 10 searches
-app.get("/history", function (req, res, next) {
+app.get("/history", function (req, res) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
+    
     //res.json(results.reverse());
-     res.render('history');
   }); 
 });
 
