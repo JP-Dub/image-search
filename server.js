@@ -30,7 +30,7 @@ app.get("/search/*", function (req, res) {
   if(err) return console.error(err);
     console.log("saved: ", query);  
   });
-  var url = http + apiKEY + cxENG + "&q=" + query + "&num=10&start=10&linkSite=0&hl=en&c2coff=1&gl=us&cr=countryUS";
+  var url = http + apiKEY + cxENG + "&q=" + query + "&num=10&start=20&linkSite=0&hl=en&c2coff=1&gl=us&cr=countryUS&searchType=image&siteSearch=items[].title";
   console.log("url" , url)
    res.redirect(url)
 });
