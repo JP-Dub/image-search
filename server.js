@@ -21,7 +21,7 @@ app.get("/", function (request, response) {
 app.get("/search/*", function (req, res) {
   var query = req.params[0],
       offset = req.param('offset'),
-      options = "&num=10&c2coff=1&start=" 
+      options = "&num=10&c2coff=1&start="; 
       if(!offset) {     
         offset = 10;
       }
