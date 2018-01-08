@@ -31,7 +31,6 @@ app.get("/search/*", function (req, res) {
     if(err) return console.error(err);
     console.log("saved: ", query);  
   });
-
   res.redirect(https);
 });
     
@@ -39,8 +38,9 @@ app.get("/search/*", function (req, res) {
 app.get("/history", function (req, res) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
-    
-    //res.json(results.reverse());
+    res.type('json');
+    res.sendFile(resul;
+    res.end();
   }); 
 });
 
