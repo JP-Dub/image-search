@@ -22,7 +22,7 @@ app.get("/", function (request, response) {
 });
 
 
-
+//&num={count?}&start={startIndex?}&safe={safe?}&cx={cx?}&sort={sort?}&filter={filter?}&gl={gl?}&cr={cr?}&googlehost={googleHost?}&c2coff={disableCnTwTranslation?}&hq={hq?}&hl={hl?}&siteSearch={siteSearch?}&siteSearchFilter={siteSearchFilter?}&exactTerms={exactTerms?}&excludeTerms={excludeTerms?}&linkSite={linkSite?}&orTerms={orTerms?}&relatedSite={relatedSite?}&dateRestrict={dateRestrict?}&lowRange={lowRange?}&highRange={highRange?}&searchType={searchType}&fileType={fileType?}&rights={rights?}&imgSize={imgSize?}&imgType={imgType?}&imgColorType={imgColorType?}&imgDominantColor={imgDominantColor?}&alt=json"
 app.get("/search/*", function (req, res) {
   var query = req.params[0];
   console.log("query", query)
@@ -30,7 +30,7 @@ app.get("/search/*", function (req, res) {
   if(err) return console.error(err);
     console.log("saved: ", query);  
   });
-  var url = http + apiKEY + cxENG + "&q=" + query;
+  var url = http + apiKEY + cxENG + "&q=" + query + "&num=10&start=0&linkSite=yes";
   console.log("url" , url)
    res.redirect(http)
 });
