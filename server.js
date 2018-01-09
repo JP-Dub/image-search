@@ -1,6 +1,5 @@
 'use strict';
 // init project
-var client = require('./client');
 var apiKEY = "&key=" + process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
     mongo = require('./mongo'),
