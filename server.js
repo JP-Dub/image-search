@@ -18,29 +18,41 @@ app.get("/", function (request, response) {
 });
 
 
-app.get("/search/*", function (req, res) {
+function fetch(https) {
+  app.get('/www.googleapis.com'+ https, function(req, res) {
+      var body = req.body;
+    console.log(body)
+    res.send("success")
+  });
+}
+
+app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
       offset = req.param('offset'),
       options = "&num=10&c2coff=1&start="; 
       if(!offset) {     
         offset = 10;
       }
-  var https = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
-  
+  //https = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
+  var https = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
   mongo.search(query, function(err, results) {
     if(err) return console.error(err);
     console.log("saved: ", query);  
   });
-  res.redirect(https);
+  fetch(https);
 });
-    
+/*
+app.get(https, function(req, res) {
+  var body = req.body
+  console.log(body)
+});
+  */  
 // post results of last 10 searches
 app.get("/history", function (req, res, next) {
   var results;
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
-    results = results.reverse();
-    res.json(results);
+    res.json(results.reverse());
   });     
 });
 
