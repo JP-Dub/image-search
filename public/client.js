@@ -1,6 +1,8 @@
-var server = require('./server');
+//var server = require('./server.js');
 
-var results = server.history
+//var results = server.history
+
+var results = [{"Search":"people","Time":"Mon Jan 08 2018 21:54:57 (UTC)"},{"Search":"presidents","Time":"Mon Jan 08 2018 21:55:03 (UTC)"},{"Search":"banks","Time":"Mon Jan 08 2018 22:03:13 (UTC)"},{"Search":"fish","Time":"Mon Jan 08 2018 22:04:45 (UTC)"},{"Search":"mexican","Time":"Mon Jan 08 2018 22:05:30 (UTC)"},{"Search":"fish","Time":"Mon Jan 08 2018 22:05:49 (UTC)"},{"Search":"india","Time":"Mon Jan 08 2018 22:06:06 (UTC)"},{"Search":"football","Time":"Mon Jan 08 2018 22:17:59 (UTC)"},{"Search":"nascar","Time":"Mon Jan 08 2018 22:18:12 (UTC)"},{"Search":"cars","Time":"Mon Jan 08 2018 22:22:54 (UTC)"}];
 
 $(document).ready(function() {
 
