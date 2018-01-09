@@ -8,6 +8,8 @@ console.log(results);
   $('header').html("API Basejump: <em>Search History</em>");
   $('article').html("");
   $('article').attr("id", "history");
+  $('footer').remove();
+  
   for(var i = 0; i < results.length; i++) {
     $("article#history").append("<p>"+ JSON.stringify(results[i]) + "</p>");
     console.log("good to go");

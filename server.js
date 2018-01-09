@@ -40,11 +40,12 @@ app.get("/history", function (req, res) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
     results = results.reverse();
-    exports.history = results;
-
+    //exports.history = results;
+    res.sendFile(__dirname + '/views/history.html')
+    //res.json(results.reverse());
   });     
   //res.sendFile(__dirname + '/views/index.html'); 
-  res.render('/views/index.html');
+  //res.render(__dirname + '/views/index.html');doesn't work
     //res.json(results.reverse());
 });
 
