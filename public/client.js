@@ -1,10 +1,15 @@
 var server = require('./server');
 
-var results = server.results
+//var results = server.results
 
-for(var i = 0; i < results.length; i++) {
-  $("#history").append("<p>"+ JSON.stringify(results[i]) + "</p>");
-  console.log("fool");
+console.log("client.js is read");
+exports.loop =  function(results) {
+
+  for(var i = 0; i < results.length; i++) {
+    $("#history").append("<p>"+ JSON.stringify(results[i]) + "</p>");
+    console.log("fool");
+  }
+  
 }
 
 /*
