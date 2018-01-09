@@ -20,8 +20,8 @@ app.get("/", function (request, response) {
 
 
 function fetch(https) {
-  console.log(https)
-  http.get('https://www.googleapis.com'+ https, function(req, res) {
+  //console.log(https)
+  app.get('https://www.googleapis.com'+ https, function(req, res) {
       var body = req.body;
     console.log("the booty")
     res.send("success")
@@ -30,7 +30,7 @@ function fetch(https) {
 
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
-      offset = req.param('offset'),
+      offset = req.query.offset,//offset = req.param('offset'),
       options = "&num=10&c2coff=1&start="; 
       if(!offset) {     
         offset = 10;
