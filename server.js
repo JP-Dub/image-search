@@ -5,7 +5,7 @@ var apiKEY = "&key=" + process.env.API_KEY,
     mongo = require('./mongo'),
     express = require('express'),
     app = express();
- var client = require('/public/client.js'); 
+ var client = require('./client.js'); 
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -36,13 +36,21 @@ app.get("/search/*", function (req, res) {
     
 // post results of last 10 searches
 app.get("/history", function (req, res) {
+  var results;
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
-    exports.results = results.reverse();
-    res.sendFile(__dirname + '/views/history.html');
+    results = results.reverse();
+  });
+  
+    client.loop(results, function(err, success) {
+      console.log(results)
+     if(err) return console.error(err);
+      res.sendFile(__dirname + '/views/history.html');
+    });
+    
     
     //res.json(results.reverse());
-  }); 
+
 });
 
 // listen for requests 
