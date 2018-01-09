@@ -19,9 +19,10 @@ app.get("/", function (request, response) {
 });
 
 
-function fetch(https, good) {
-  //console.log(https)
-  var req = http.request('https://www.googleapis.com'+ https, function(res) {
+function fetch(https, baloney) {
+  console.log(https)
+  var req = http.request('https://www.googleapis.com', function(res) {
+    console.log(res)
      return res;
   });
 }
@@ -38,12 +39,17 @@ app.get("/search/*", function (req, res, next) {
   mongo.search(query, function(err, results) {
     if(err) return console.error(err);
     console.log("saved: ", query); 
-    //res.redirect(https)
-    fetch(https, function(good) {
-    }
     
   });
-  
+  //res.redirect(https)
+   var options = {
+    host: host,
+    path: endpoint,
+    method: method,
+    headers: headers
+  }
+   
+   
   
 });
 /*
