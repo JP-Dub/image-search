@@ -42,8 +42,9 @@ app.get("/history", function (req, res) {
     results = results.reverse();
     exports.history = results;
 
-    res.sendFile(__dirname + '/views/index.html');  
   });     
+  //res.sendFile(__dirname + '/views/index.html'); 
+  res.render('/views/index.html');
     //res.json(results.reverse());
 });
 
