@@ -39,9 +39,9 @@ app.get("/history", function (req, res) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
     exports.results = results;
-    res.sendFile(__dirname + '/views/history.html');
+    //res.sendFile(__dirname + '/views/history.html');
     
-    //res.json(results.reverse());
+    res.json(results.reverse());
   }); 
 });
 
