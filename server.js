@@ -30,17 +30,18 @@ function fetch(https) {
 
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
-      offset = req.query.offset,//offset = req.param('offset'),
+      offset = req.query.offset || 10,//offset = req.param('offset'),
       options = "&num=10&c2coff=1&start="; 
-      if(!offset) {     
-        offset = 10;
-      }
-  //https = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
-  var https = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
+     // if(!offset) {     
+     //   offset = 10;
+     // }
+  var https = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
+  //var https = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
   mongo.search(query, function(err, results) {
     if(err) return console.error(err);
     console.log("saved: ", query); 
-    fetch(https);
+    res.redirect(https)
+    //fetch(https);
   });
   
   
