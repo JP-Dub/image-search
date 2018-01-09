@@ -4,6 +4,7 @@ var apiKEY = "&key=" + process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
     mongo = require('./mongo'),
     express = require('express'),
+    http = require('https'),
     app = express();
 
 // http://expressjs.com/en/starter/static-files.html
@@ -19,9 +20,10 @@ app.get("/", function (request, response) {
 
 
 function fetch(https) {
-  app.get('/www.googleapis.com'+ https, function(req, res) {
+  console.log(https)
+  http.get('https://www.googleapis.com'+ https, function(req, res) {
       var body = req.body;
-    console.log(body)
+    console.log("the booty")
     res.send("success")
   });
 }
@@ -37,9 +39,11 @@ app.get("/search/*", function (req, res, next) {
   var https = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
   mongo.search(query, function(err, results) {
     if(err) return console.error(err);
-    console.log("saved: ", query);  
+    console.log("saved: ", query); 
+    fetch(https);
   });
-  fetch(https);
+  
+  
 });
 /*
 app.get(https, function(req, res) {
