@@ -1,16 +1,16 @@
 var server = require('./server');
 
-//var results = server.results
+var results = server.history
 
-console.log("client.js is read");
-exports.loop =  function(results) {
+$(document).ready(function() {
 
+console.log(results);
+  $('article').html("");
   for(var i = 0; i < results.length; i++) {
     $("#history").append("<p>"+ JSON.stringify(results[i]) + "</p>");
-    console.log("fool");
+    console.log("good to go");
   }
-  
-}
+});
 
 /*
 $(function() {

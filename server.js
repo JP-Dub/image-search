@@ -41,7 +41,8 @@ app.get("/history", function (req, res) {
     if(err) return console.error(err);
     results = results.reverse();
     exports.history = results;
-    res.sendFile(__dirname + '/views/history.html');  
+
+    res.sendFile(__dirname + '/views/index.html');  
   });     
     //res.json(results.reverse());
 });
