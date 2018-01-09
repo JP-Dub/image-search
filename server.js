@@ -6,7 +6,7 @@ var apiKEY = "&key=" + process.env.API_KEY,
     express = require('express'),
     http = require('https'),
     app = express();
-
+    var http = require('https');
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -19,12 +19,10 @@ app.get("/", function (request, response) {
 });
 
 
-function fetch(https) {
+function fetch(https, good) {
   //console.log(https)
-  app.get('https://www.googleapis.com'+ https, function(req, res) {
-      var body = req.body;
-    console.log("the booty")
-    res.send("success")
+  var req = http.request('https://www.googleapis.com'+ https, function(res) {
+     return res;
   });
 }
 
@@ -35,13 +33,15 @@ app.get("/search/*", function (req, res, next) {
      // if(!offset) {     
      //   offset = 10;
      // }
-  var https = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
-  //var https = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
+  //var https = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
+  var https = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
   mongo.search(query, function(err, results) {
     if(err) return console.error(err);
     console.log("saved: ", query); 
-    res.redirect(https)
-    //fetch(https);
+    //res.redirect(https)
+    fetch(https, function(good) {
+    }
+    
   });
   
   
