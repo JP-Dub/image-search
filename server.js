@@ -35,7 +35,7 @@ app.get("/search/*", function (req, res) {
 });
     
 // post results of last 10 searches
-app.get("/history", function (req, res) {
+app.get("/history", function (req, res, next) {
   var results;
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
@@ -47,7 +47,11 @@ app.get("/history", function (req, res) {
   //res.sendFile(__dirname + '/views/index.html'); 
   //res.render(__dirname + '/views/index.html');doesn't work
     //res.json(results.reverse());
+}, function(res) {
+  res.sendFile(__dirname + '/views/history.html')
 });
+
+
 
 // listen for requests 
 var listener = app.listen(process.env.PORT, function () {
