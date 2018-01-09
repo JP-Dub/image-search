@@ -26,7 +26,7 @@ app.get("/search/*", function (req, res) {
         offset = 10;
       }
   var https = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
-  //res.sendFile(__dirname + '/views/postsearch.html');
+  
   mongo.search(query, function(err, results) {
     if(err) return console.error(err);
     console.log("saved: ", query);  
@@ -40,15 +40,9 @@ app.get("/history", function (req, res, next) {
   mongo.search(null, function callback(err, results) { 
     if(err) return console.error(err);
     results = results.reverse();
-    //exports.history = results;
-    res.sendFile(__dirname + '/views/history.html');
-    //res.attachment('/public/client.js');
-    //res.json(results.reverse());
+    res.json(results);
   });     
 });
-
-
-
 
 // listen for requests 
 var listener = app.listen(process.env.PORT, function () {
