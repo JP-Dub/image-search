@@ -5,9 +5,11 @@ var results = server.history
 $(document).ready(function() {
 
 console.log(results);
+  $('header').html("API Basejump: <em>Search History</em>");
   $('article').html("");
+  $('article').attr("id", "history");
   for(var i = 0; i < results.length; i++) {
-    $("#history").append("<p>"+ JSON.stringify(results[i]) + "</p>");
+    $("article#history").append("<p>"+ JSON.stringify(results[i]) + "</p>");
     console.log("good to go");
   }
 });
