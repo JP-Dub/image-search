@@ -41,13 +41,12 @@ app.get("/history", function (req, res, next) {
     if(err) return console.error(err);
     results = results.reverse();
     //exports.history = results;
-    res.render('/views/index.html', '/public/client.js')
+    res.sendFile(__dirname + '/views/history.html');
+    //res.attachment('/public/client.js');
     //res.json(results.reverse());
   });     
-  //res.sendFile(__dirname + '/views/index.html'); 
-  //res.render(__dirname + '/views/index.html');doesn't work
-    //res.json(results.reverse());
 });
+
 
 
 
