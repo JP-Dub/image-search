@@ -33,7 +33,7 @@
     "jdub",
     "image search abstraction layer"
   ]
-}{
+}, {
   "name": "image-search",
   "version": "1.0.0",
   "description": "FCC Backend Challenge: Image Search Abstraction Layer",
