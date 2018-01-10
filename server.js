@@ -40,8 +40,8 @@ function wretch(url, baloney) {
 
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
-      offset = req.query.offset || 2, //10,//offset = req.param('offset'),
-      options = "&num=1&c2coff=1&imgColorType=color&imgSize=medium&searchType=image&start=";
+      offset = req.query.offset || 10, //10,//offset = req.param('offset'),
+      options = "&num=1&c2coff=1&imgColorType=color&imgSize=medium&start="; //&searchType=image
       
   var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
   //var url = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
