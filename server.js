@@ -19,18 +19,18 @@ app.get("/", function (request, response) {
 });
 
 
-function fetch(https, baloney) {
-  console.log(https)
-  var req = http.request('https://www.googleapis.com', function(res) {
-    console.log(res)
-     return res;
+function fetch(url, baloney) {
+  app.get(url, function(res) {
+    var status = res.statusCode;
+    var body = res.body;
+    console.log(status);
   });
 }
 
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
-      offset = "&start=" + req.query.offset || 2, //10,//offset = req.param('offset'),
-      options = "&num=1&c2coff=1&imgColorType=color&imgSize=medium&searchType=image";
+      offset = req.query.offset || 2, //10,//offset = req.param('offset'),
+      options = "&num=1&c2coff=1&imgColorType=color&imgSize=medium&searchType=image&start=";
       
   var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
   //var url = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
@@ -39,17 +39,19 @@ app.get("/search/*", function (req, res, next) {
     console.log("saved: ", query);   
   });
   //res.redirect(https)
+  /*
   https.get(url, (res) => {
   console.log('statusCode:', res.statusCode);
   //console.log('headers:', res.headers);
 
   res.on('data', (d) => {
+    
     process.stdout.write(d);
   });
 
 }).on('error', (e) => {
   console.error(e);
-});
+ });/*
    
    
   
