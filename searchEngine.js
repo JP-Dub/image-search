@@ -5,7 +5,7 @@ exports.engine = function(url, complete) {
   
   fetch(url) 
     .then(function(res) {
-    console.log(res.statusCode)
+    console.log(res.body.status)
       return res.json();
     }).then(function(json) {
     

@@ -23,11 +23,11 @@ app.get("/", function (request, response) {
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
       //exact = "&exactTerms=" + query,
-      offset = req.query.offset || 10, //10,//offset = req.param('offset'),
-      options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start="; //&searchType=image
+      offset = req.query.offset || 10, 
+      options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start="; 
       
-  //var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
-  var url = "https://www.googleapis.com/customsearch/v1?" + options + "&q=" + query + offset + apiKEY + cxENG;
+  var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
+  //var url = "https://www.googleapis.com/customsearch/v1" + options + "&q=" + query + offset + apiKEY + cxENG;
   mongo.store(query, function(err, results) {
     if(err) return console.error(err);
     console.log("saved: ", query);   
