@@ -20,10 +20,11 @@ app.get("/", function (request, response) {
 
 
 function fetch(url, baloney) {
-  app.get(url, function(res) {
+  https.get(url, function(res) {
     var status = res.statusCode;
-    var body = res.body;
     console.log(status);
+  
+    baloney(res);  
   });
 }
 
@@ -39,22 +40,23 @@ app.get("/search/*", function (req, res, next) {
     console.log("saved: ", query);   
   });
   //res.redirect(https)
+  fetch(url, function baloney(results) {
+    console.log(results)
+  res.json(results);
+  });
   /*
   https.get(url, (res) => {
   console.log('statusCode:', res.statusCode);
   //console.log('headers:', res.headers);
 
-  res.on('data', (d) => {
-    
+   res.on('data', (d) => { 
     process.stdout.write(d);
   });
 
-}).on('error', (e) => {
+  }).on('error', (e) => {
   console.error(e);
- });/*
+  });*/
    
-   
-  
 });
 /*
 app.get(https, function(req, res) {
