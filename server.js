@@ -53,7 +53,7 @@ app.get("/search/*", function (req, res, next) {
   wretch(url, function baloney(results) {
     //if (err === 200) return console.error(err);
     console.log(results, 'results')
-    res.json(results);
+    res.json(results.items);
   });
   
   /*
