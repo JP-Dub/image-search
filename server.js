@@ -2,11 +2,12 @@
 // init project
 var apiKEY = "&key=" + process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
-    mongo = require('./mongo'),
     express = require('express'),
-    http = require('https'),
+    mongo = require('./mongo'),
+    https = require('https'),
+    fetch = require('node-fetch'),
     app = express();
-    var https = require('https');
+    //var https = require('https');
    
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -20,12 +21,21 @@ app.get("/", function (request, response) {
 });
 
 
-function fetch(url, baloney) {
+function wretch(url, baloney) {
+  fetch(url) 
+    .then(function(res) {
+      return res.json();
+    }).then(function(json) {
+      baloney(json);
+    });
+  
+ /*
   https.get(url, function(req, res) {
     var status = req.statusCode;
     console.log(status, "status", req);  
     baloney(status, req.header );  
   });
+  */
 }
 
 app.get("/search/*", function (req, res, next) {
@@ -40,10 +50,10 @@ app.get("/search/*", function (req, res, next) {
     console.log("saved: ", query);   
   });
   //res.redirect(https)
-  fetch(url, function baloney(err, results) {
-    if (err === 200) return console.error(err);
+  wretch(url, function baloney(results) {
+    //if (err === 200) return console.error(err);
     console.log(results, 'results')
-    res.sendStatus(err);
+    res.json(results);
   });
   
   /*
