@@ -23,7 +23,7 @@ app.get("/", function (request, response) {
 function fetch(url, baloney) {
   https.get(url, function(req, res) {
     var status = req.statusCode;
-    console.log(status, "status", req.body);  
+    console.log(status, "status", req);  
     baloney(status, req.header );  
   });
 }
@@ -43,7 +43,7 @@ app.get("/search/*", function (req, res, next) {
   fetch(url, function baloney(err, results) {
     if (err === 200) return console.error(err);
     console.log(results, 'results')
-    res.json(results);
+    res.sendStatus(err);
   });
   
   /*
