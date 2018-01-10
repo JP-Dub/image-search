@@ -6,7 +6,7 @@ var apiKEY = "&key=" + process.env.API_KEY,
     express = require('express'),
     http = require('https'),
     app = express();
-    var http = require('https');
+    var https = require('https');
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -30,24 +30,27 @@ function fetch(https, baloney) {
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
       offset = req.query.offset || 10,//offset = req.param('offset'),
-      options = "&num=10&c2coff=1&start="; 
-     // if(!offset) {     
-     //   offset = 10;
-     // }
-  //var https = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
-  var https = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
+      options = "&num=10&c2coff=1&start=";
+      
+  var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
+  //var url = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
   mongo.search(query, function(err, results) {
     if(err) return console.error(err);
     console.log("saved: ", query); 
     
   });
   //res.redirect(https)
-   var options = {
-    host: host,
-    path: endpoint,
-    method: method,
-    headers: headers
-  }
+  https.get(url, (res) => {
+  console.log('statusCode:', res.statusCode);
+  //console.log('headers:', res.headers);
+
+  res.on('data', (d) => {
+    process.stdout.write(d);
+  });
+
+}).on('error', (e) => {
+  console.error(e);
+});
    
    
   
