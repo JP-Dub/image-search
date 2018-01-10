@@ -29,15 +29,14 @@ function fetch(https, baloney) {
 
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
-      offset = req.query.offset || 10,//offset = req.param('offset'),
-      options = "&num=10&c2coff=1&start=";
+      offset = "&start=" + req.query.offset || 2, //10,//offset = req.param('offset'),
+      options = "&num=1&c2coff=1&imgColorType=color&imgSize=medium&searchType=image";
       
   var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
   //var url = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
   mongo.search(query, function(err, results) {
     if(err) return console.error(err);
-    console.log("saved: ", query); 
-    
+    console.log("saved: ", query);   
   });
   //res.redirect(https)
   https.get(url, (res) => {
