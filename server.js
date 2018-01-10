@@ -20,55 +20,25 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
- /*
-function wretch(url, baloney) {
-  fetch(url) 
-    .then(function(res) {
-      return res.json();
-    }).then(function(json) {
-      baloney(json);
-    });
-  // different code
-  https.get(url, function(req, res) {
-    var status = req.statusCode;
-    console.log(status, "status", req);  
-    baloney(status, req.header );  
-  });
-
-}  */
-
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
       //exact = "&exactTerms=" + query,
       offset = req.query.offset || 10, //10,//offset = req.param('offset'),
-      options = "&exactTerms=" + query + "&num=2&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start="; //&searchType=image
+      options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start="; //&searchType=image
       
-  var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
-  //var url = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
+  //var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
+  var url = "https://www.googleapis.com/customsearch/v1?" + options + "&q=" + query + offset + apiKEY + cxENG;
   mongo.store(query, function(err, results) {
     if(err) return console.error(err);
     console.log("saved: ", query);   
   });
-  //res.redirect(https)
+
   search.engine(url, function complete(results) {
     //if (err === 200) return console.error(err);
-    //console.log(results, 'results')
+    
     res.json(results);
   });
   
-  /*
-  https.get(url, (res) => {
-  console.log('statusCode:', res.statusCode);
-  //console.log('headers:', res.headers);
-
-   res.on('data', (d) => { 
-    process.stdout.write(d);
-  });
-
-  }).on('error', (e) => {
-  console.error(e);
-  });*/
-   
 });
 
 // post results of last 10 searches
