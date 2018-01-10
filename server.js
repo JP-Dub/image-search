@@ -41,7 +41,7 @@ app.get("/search/*", function (req, res, next) {
   var query = req.params[0] + "&exactTerms=" + req.params[0],
       //exact = "&exactTerms=" + query,
       offset = req.query.offset || 10, //10,//offset = req.param('offset'),
-      options = "&num=1&c2coff=1&imgColorType=color&client=google-csbe&start="; //&searchType=image
+      options = "&num=3&c2coff=1&imgColorType=color&client=google-csbe&start="; //&searchType=image
       
   var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
   //var url = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
@@ -50,10 +50,10 @@ app.get("/search/*", function (req, res, next) {
     console.log("saved: ", query);   
   });
   //res.redirect(https)
-  wretch(url, function baloney(results) {
+  search.engine(url, function complete(results) {
     //if (err === 200) return console.error(err);
-    console.log(results, 'results')
-    res.json(results.items);
+    //console.log(results, 'results')
+    res.json(results);
   });
   
   /*

@@ -4,10 +4,11 @@ var fetch = require('node-fetch');
 exports.engine = function(url, complete) {
   fetch(url) 
     .then(function(res) {
+    console.log(res.statusCode)
       return res.json();
     }).then(function(json) {
-    var json = json[0];
-    for(var key in json)
+    //var json = json[0];
+    
     
     
       complete(json);
