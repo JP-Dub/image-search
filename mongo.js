@@ -2,8 +2,6 @@ var MongoClient = require('mongodb').MongoClient,
     mongoURL = process.env.MONGOLAB_URI,
     assert = require('assert'),
     dbName = "urlDatabase";
-    //express = require('express'),
-    //app = express();
 
 exports.store = function(query, callback) {
 
@@ -23,8 +21,7 @@ exports.store = function(query, callback) {
           date = t.replace(/(GMT|UTC)(-|\+)\d{0,4}\s+/g, "");
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
-          console.log("MongoDB log: {Search: " + query + " , Time: " + date});   
-        //console.log(results)
+          console.log('MongoDB log: {Search: " + query + " , Time: " + date}');   
       }); 
     }
               
