@@ -60,12 +60,7 @@ app.get("/search/*", function (req, res, next) {
   });*/
    
 });
-/*
-app.get(https, function(req, res) {
-  var body = req.body
-  console.log(body)
-});
-  */  
+
 // post results of last 10 searches
 app.get("/history", function (req, res, next) {
   var results;
