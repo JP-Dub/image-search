@@ -7,6 +7,7 @@ var apiKEY = "&key=" + process.env.API_KEY,
     http = require('https'),
     app = express();
     var https = require('https');
+    var stream = require('stream');
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
 
@@ -23,8 +24,7 @@ function fetch(url, baloney) {
   https.get(url, function(res) {
     var status = res.statusCode;
     console.log(status);
-  
-    baloney(res);  
+    baloney(status, );  
   });
 }
 
@@ -40,9 +40,10 @@ app.get("/search/*", function (req, res, next) {
     console.log("saved: ", query);   
   });
   //res.redirect(https)
-  fetch(url, function baloney(results) {
+  fetch(url, function baloney(err, results) {
+    if (err) return console.error(err);
     console.log(results)
-  res.json(results);
+    res.json(results);
   });
   /*
   https.get(url, (res) => {
