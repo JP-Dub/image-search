@@ -24,7 +24,8 @@ function fetch(url, baloney) {
   https.get(url, function(req, res) {
     var status = req.statusCode;
     console.log(status, "status", req.body);
-    baloney(status, req.body );  
+  
+    baloney(status, req.header );  
   });
 }
 
