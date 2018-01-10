@@ -4,8 +4,8 @@ var apiKEY = "&key=" + process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
     express = require('express'),
     mongo = require('./mongo'),
-    https = require('https'),
-    fetch = require('node-fetch'),
+    search = require('./searchEngine'),
+    //https = require('https'),  
     app = express();
     //var https = require('https');
    
@@ -20,7 +20,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-
+ /*
 function wretch(url, baloney) {
   fetch(url) 
     .then(function(res) {
@@ -28,15 +28,14 @@ function wretch(url, baloney) {
     }).then(function(json) {
       baloney(json);
     });
-  
- /*
+  // different code
   https.get(url, function(req, res) {
     var status = req.statusCode;
     console.log(status, "status", req);  
     baloney(status, req.header );  
   });
-  */
-}
+
+}  */
 
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0] + "&exactTerms=" + req.params[0],
@@ -46,7 +45,7 @@ app.get("/search/*", function (req, res, next) {
       
   var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
   //var url = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;
-  mongo.search(query, function(err, results) {
+  mongo.store(query, function(err, results) {
     if(err) return console.error(err);
     console.log("saved: ", query);   
   });
@@ -75,7 +74,7 @@ app.get("/search/*", function (req, res, next) {
 // post results of last 10 searches
 app.get("/history", function (req, res, next) {
   var results;
-  mongo.search(null, function callback(err, results) { 
+  mongo.store(null, function callback(err, results) { 
     if(err) return console.error(err);
     res.json(results.reverse());
   });     

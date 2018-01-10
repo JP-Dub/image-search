@@ -5,7 +5,7 @@ var MongoClient = require('mongodb').MongoClient,
     //express = require('express'),
     //app = express();
 
-exports.search = function(query, callback) {
+exports.store = function(query, callback) {
 
 // Use connect method to connect to the Server
   MongoClient.connect(mongoURL, function(err, client) {
