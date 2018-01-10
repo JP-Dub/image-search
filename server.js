@@ -38,10 +38,10 @@ function wretch(url, baloney) {
 }  */
 
 app.get("/search/*", function (req, res, next) {
-  var query = req.params[0] + "&exactTerms=" + req.params[0],
+  var query = req.params[0],
       //exact = "&exactTerms=" + query,
       offset = req.query.offset || 10, //10,//offset = req.param('offset'),
-      options = "&num=2&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start="; //&searchType=image
+      options = "&exactTerms=" + query + "&num=2&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start="; //&searchType=image
       
   var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
   //var url = "/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG;

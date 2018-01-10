@@ -8,10 +8,16 @@ exports.engine = function(url, complete) {
       return res.json();
     }).then(function(json) {
     
-    for(var i = 0; i < json
+    var comp = [];
+    for(var i = 0; i < json.items.length; i++) {
+      var arr = json.items[i],
+          obj = { altText: json.snippet, 
+                  pageURL: json.link, 
+                  imageURL : json.pagemap.cse_image[0].src
+                };
+      comp.push(obj);
+    }
     
-    
-    
-      complete(json);
+      complete(comp);
     });
 }
