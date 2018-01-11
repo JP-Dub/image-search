@@ -12,33 +12,32 @@
       <div class="container">
         <header>API Basejump: <em>Image Search Abstraction Layer</em></header><br>
         <article>
-        <p>User stories:</p>
-          <p class="user">1) I can get the image URLs, alt text and page urls for a set of images relating to a given search string.<br> 2) OPTIONAL: I can paginate through the responses by adding the parameter, <em><mark>?offset=2</mark>
-            </em> to the end of the URL.<br><span class="indent">(default: offset=0)</span><br> 3) I can get a list of the most recently submitted search strings.</p>
+        <p>User Stories:</p>
+          <p class="user">1) I can get the image URLs, alt text and page URLs for a set of images relating to a given search string.<br>2) I can paginate through the responses by adding the parameter, <em><mark>?offset=2</mark>
+            </em> to the end of the URL.<br><span class="indent"><sup>Optional: (default: offset=0)</sup></span><br> 3) I can get a list of the most recently submitted search strings.</p>
         </article>
           <footer>
           <p class="example">
-            Example creation usage:
+            Example Creation Usage:
           </p>
-            <p><mark>https://imaginary-bank.glitch.me/search/</mark>[your search term]</p>
-            <p><mark>https://imaginary-bank.glitch.me/search/</mark>[your search term]<mark>?offset=</mark>[a number to paginate]</p>           
+            <p>https://imaginary-bank.glitch.me<mark>/search/</mark>[your search term]</p>
+            <p>https://imaginary-bank.glitch.me<mark>/search/</mark>[your search term]<mark>?offset=</mark>[a number to paginate]</p>           
           <p class="example">
-            Example search usage:
+            Example Search Usage:
           </p>
-          <p><mark>
-            https://imaginary-bank.glitch.me/search/presidents?offset=10</mark></p>
+            <p><mark>         
+            https://imaginary-bank.glitch.me/search/horses</mark></p>
+          <p><mark>       
+            https://imaginary-bank.glitch.me/search/presidents?offset=6</mark></p>
           <p class="example">
-            Example output:
+            Example Output:
           </p>
             <p><mark>{"Title":"Corolla Wild Horses Gallery | Corolla Wild Horses | Corolla Wild ...", "PageURL":"https://www.corollawildhorses.com/wp-content/gallery/corolla-wild-horses/horses-02.jpg", "Image":{"contextLink":"https://www.corollawildhorses.com/corolla-wild-horses-gallery/","height":480,"width":640,"byteSize":151877,"thumbnailLink":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO9kA3eenHM6xJjsrk3eSpnN2w2nqRJ2nWU0PU7bTz4gMygVDJQ4qmAja5","thumbnailHeight":103,"thumbnailWidth":137}...</mark></p>            
           <p class="example">
-            View search history:
+            View Search History:
           </p>
           <p><mark>https://imaginary-bank.glitch.me/history</mark></p>
             </footer>
       </div>
-      <!--<script src="https://code.jquery.com/jquery-2.2.1.min.js"></script>
-       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-      <script src="/client.js"></script>-->
    </body>
 </html>
