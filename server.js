@@ -18,7 +18,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
-
+// destination for search and search results
 app.get("/search/*", function(req, res) {
   var query = req.params[0],
       offset = req.query.offset || 0, 
@@ -26,6 +26,7 @@ app.get("/search/*", function(req, res) {
   // options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start="; 
       var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
   
+  // function for http request
   search.engine(url, function complete(err, results) {
     if (err) return res.json(err);
       res.json(results);     

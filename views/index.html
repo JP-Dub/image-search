@@ -5,23 +5,24 @@
      <meta name="viewport" content="width=device-width, initial-scale=1">
      <meta charset = "utf-8">     
      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
-     <link href="/public/style.css" rel="stylesheet" type="text/css">
-     
+     <link href="/public/style.css" rel="stylesheet" type="text/css">    
    </head>   
    <body>
       <div class="container">
         <header>API Basejump: <em>Image Search Abstraction Layer</em></header><br>
         <article>
         <p>User Stories:</p>
-          <p class="user">1) I can get the image URLs, alt text and page URLs for a set of images relating to a given search string.<br>2) I can paginate through the responses by adding the parameter, <em><mark>?offset=2</mark>
-            </em> to the end of the URL.<br><span class="indent"><sup>Optional: (default: offset=0)</sup></span><br> 3) I can get a list of the most recently submitted search strings.</p>
+          <p class="user">
+            1) I can get the image URLs, alt text and page URLs for a set of images relating to a given search string.<br>
+            2) Optional: I can paginate through the responses by adding the parameter, <em><mark>?offset=2</mark></em> to the end of the URL.<em><sub>(default: offset=0)</sub></em><br>
+            3) I can get a list of the most recently submitted search strings.</p>
         </article>
           <footer>
           <p class="example">
             Example Creation Usage:
           </p>
             <p>https://imaginary-bank.glitch.me<mark>/search/</mark>[your search term]</p>
-            <p>https://imaginary-bank.glitch.me<mark>/search/</mark>[your search term]<mark>?offset=</mark>[a number to paginate]</p>           
+            <p>https://imaginary-bank.glitch.me<mark>/search/</mark>[your search term]<mark>?offset=</mark>[a number to paginate] <em><sub>(default: offset=0)</sub></em></p>           
           <p class="example">
             Example Search Usage:
           </p>
@@ -30,7 +31,7 @@
           <p class="example">
             Example Output:
           </p>
-            <p><mark>{ "Title" : "Corolla Wild Horses Gallery | Corolla Wild Horses | Corolla Wild ...", "PageURL" : "https://www.corollawildhorses.com/wp-content/gallery/corolla-wild-horses/horses-02.jpg", "Image": { "contextLink" : "https://www.corollawildhorses.com/corolla-wild-horses-gallery/", "height" : 480, "width" : 640, "byteSize" : 151877, "thumbnailLink" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO9kA3eenHM6xJjsrk3eSpnN2w2nqRJ2nWU0PU7bTz4gMygVDJQ4qmAja5","thumbnailHeight":103,"thumbnailWidth":137 }...</mark></p>            
+            <p><mark>{ "Title" : "Corolla Wild Horses Gallery | Corolla Wild Horses | Corolla Wild ...", "PageURL" : "https://www.corollawildhorses.com/wp-content/gallery/corolla-wild-horses/horses-02.jpg", "Image": { "contextLink" : "https://www.corollawildhorses.com/corolla-wild-horses-gallery/", "height" : 480, "width" : 640, "byteSize" : 151877, "thumbnailLink" : "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSO9kA3eenHM6xJjsrk3eSpnN2w2nqRJ2nWU0PU7bTz4gMygVDJQ4qmAja5", "thumbnailHeight" : 103, "thumbnailWidth" : 137 }...</mark></p>            
           <p class="example">
             View Search History:
           </p>
