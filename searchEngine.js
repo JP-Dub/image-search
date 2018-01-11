@@ -5,10 +5,10 @@ exports.engine = function(url, complete) {
   
   fetch(url) 
     .then(function(res) {
-    console.log(res, res.json)
+    console.log(res.status,"Status", res.json)
       return res.json();
     }).then(function(json) {
-    
+    console.log(json.items.length, "length", json)
       var obj = [];
       for(var i = 0; i < json.items.length; i++) {
         var arr = json.items[i],

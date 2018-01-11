@@ -36,15 +36,9 @@ app.get("/search/*", function(req, res, next) {
   
     mongo.store(query, function(err, results) {
     if(err) return console.error(err);
-    console.log("saved: ", query);   
+      
   });
   
-});
-
-app.get("/:offset", function(req, res) {
-  var check = req.params;
-  //var word = req.check.offset;
-  console.log(req.params, check)
 });
 
 // post results of last 10 searches
