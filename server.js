@@ -24,8 +24,8 @@ app.get("/", function (request, response) {
 
 app.get("/search/*", function(req, res) {
   var query = req.params[0],
-      offset = req.query.offset || 10, 
-      options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&fields=items&start=";  
+      offset = req.query.offset || 1, 
+      options = "&exactTerms=" + query + "&num=10&c2coff=1&imgSize=large&imgType=photo&searchType=image&imgColorType=color&fields=items&startPage=";  
   // options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start="; 
       var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
   
