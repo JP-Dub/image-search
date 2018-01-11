@@ -30,7 +30,7 @@ app.get("/search/*", function(req, res) {
   search.engine(url, function complete(err, results) {
     if (err) return res.json(err);
       res.json(results);     
-  }),
+  }),// saves search results
      mongo.store(query, function(err, results) {
       if(err) return console.error(err);
       console.log(results)
