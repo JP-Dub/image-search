@@ -40,11 +40,6 @@ article {
   border-left: .5vmin solid #fce9e9;
 }
 
-.indent {
-  margin-left: 28px;
-  margin-left: 2.8vw;
-}
-
 article p:nth-child(1) {
   padding-top: 10px;
   padding-top: 1vmin;
