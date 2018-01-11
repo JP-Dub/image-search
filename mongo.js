@@ -9,7 +9,7 @@ exports.store = function(query, callback) {
   MongoClient.connect(mongoURL, function(err, client) {
     assert.equal(null, err);
       console.log('Mongo connection established...');
-  
+    
     var db = client.db(dbName);  
     var collection = db.collection('history');
     
@@ -21,9 +21,10 @@ exports.store = function(query, callback) {
        date = t.replace(/(GMT|UTC)(-|\+)\d{0,4}\s+/g, "");
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
-          //console.log('MongoDB log: {Search: ' + query + ' , Time: ' + date + "}"); 
+        var dbLog= {Search: query, Time: date};
+        return callback(null, dbLog)
       }); 
-      callback("sa)
+      
     } else {
               
     // returns search history and time from db     
@@ -33,9 +34,8 @@ exports.store = function(query, callback) {
       projection : {_id: 0, Search: 1, Time: 1}
       }).toArray(function(err, history) {
         assert.equal(err, null);  
-        callback(null, history);
-    });
-      
+        return callback(null, history);
+    });     
     }
     console.log("client closed");
     client.close();

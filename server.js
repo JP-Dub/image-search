@@ -34,11 +34,8 @@ app.get("/search/*", function(req, res) {
   }),
      mongo.store(query, function(err, results) {
       if(err) return console.error(err);
-      console.log("saved!")
+      console.log(results)
     });
-  
-  
-  
   
   //res.end();
 });
@@ -48,7 +45,7 @@ app.get("/history", function (req, res) {
   //var results;
   mongo.store(null, function callback(err, results) { 
     if(err) return console.error(err);
-    res.json(results.reverse());
+    res.json(results);
   });     
 });
 
