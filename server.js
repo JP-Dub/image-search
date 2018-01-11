@@ -42,11 +42,11 @@ app.get("/search/*", function(req, res, next) {
 });
 
 // post results of last 10 searches
-app.get("/history", function (req, res, next) {
-  var results;
+app.get("/history", function (req, res) {
+  //var results;
   mongo.store(null, function callback(err, results) { 
     if(err) return console.error(err);
-    res.json(results.reverse());
+    res.json(results);
   });     
 });
 
