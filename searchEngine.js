@@ -27,3 +27,5 @@ exports.engine = function(url, complete) {
    return complete(null, json);
   });
 }
+
+//&orTerms=items%5B%5D.pagemap.(key)%5B%5D
