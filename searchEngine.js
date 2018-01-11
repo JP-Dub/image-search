@@ -5,12 +5,13 @@ exports.engine = function(url, complete) {
   
   fetch(url) 
     .then(function(res) {
-    if(res.status !== 200) return console.error(res.status, res.statusCode);
+    var err = {status: res.staus, statusCode: res.statusCode};
+    if(res.status !== 200) return complete(err);
     //console.log(res.status,"Status", res.json)
       return res.json();
     }).then(function(json) {
     console.log(json.items.length, "length", json)
-      var obj = [];
+     /* var obj = [];
       for(var i = 0; i < json.items.length; i++) {
         var arr = json.items[i],
           items = {  imageURL : arr.pagemap.cse_image[0].src,
@@ -21,7 +22,7 @@ exports.engine = function(url, complete) {
       }    
     if(obj.length === 0) {
       return complete(json)
-    }
-   return complete(obj);
+    }*/
+   return complete(null, json);
   });
 }
