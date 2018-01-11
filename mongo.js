@@ -34,8 +34,6 @@ exports.store = function(query, callback) {
         assert.equal(err, null);  
         callback(null, history);
     });    
-    console.log("client closed");
-  client.close();
  });
 }
 

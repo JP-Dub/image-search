@@ -22,7 +22,7 @@ app.get("/", function (request, response) {
 });
 
 
-app.get("/search/*", function(req, res, next) {
+app.get("/search/*", function(req, res) {
   var query = req.params[0],
       offset = req.query.offset || 10, 
       options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start=";     
@@ -30,14 +30,11 @@ app.get("/search/*", function(req, res, next) {
 
   search.engine(url, function complete(err, results) {
     if (err) return console.log(err);
-    res.json(results);
-  });
-  
+      res.json(results);
     mongo.store(query, function(err, results) {
-    if(err) return console.error(err);
-      
+      if(err) return console.error(err);      
+    });
   });
-  
 });
 
 // post results of last 10 searches
