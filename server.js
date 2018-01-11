@@ -32,11 +32,11 @@ app.get("/search/*", function(req, res) {
     if (err) return console.log(err);
      res.json(results); 
   })
-  
+  /*
   mongo.store(query, function(err, results) {
       if(err) return console.error(err);
-      return;
-    });
+    });*/
+  //res.end();
 });
 
 // post results of last 10 searches
