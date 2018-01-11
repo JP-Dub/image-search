@@ -11,20 +11,19 @@ exports.engine = function(url, complete) {
     //console.log(res.status,"Status", res.json)
       return res.json();
     }).then(function(json) {
-    //var jsonp = json.items;
+    
     //console.log(jsonp.length, "length")
-    /*  var obj = [];
+      var obj = [];
       for(var i = 0; i < 10; i++) {
-        var arr = jsonp[i];
-        if (jsonp[i] === arr.pagemap.cse_image[0].src) {
-          var items = {  imageURL : arr.pagemap.cse_image[0].src,
-                     altText: arr.snippet, 
-                     pageURL: arr.link                
-                  };
-          obj.push(items);
-          }
-      } */   
-   return complete(null, json);
+        var arr = json.items[i];
+       
+          var items = { Title : arr.title, 
+                        PageURL : arr.link,
+                        Image: arr.image                
+                      };
+          obj.push(items);   
+      }   
+   return complete(null, obj);
   });
 }
 
