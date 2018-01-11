@@ -19,7 +19,9 @@ exports.engine = function(url, complete) {
                   };
           obj.push(items);
       }    
-    
-    complete(obj, json);
+    if(obj.length === 0) {
+      return complete(json)
+    }
+   return complete(obj);
   });
 }
