@@ -6,9 +6,6 @@ var apiKEY = "&key=" + process.env.API_KEY,
     mongo = require('./mongo'),
     search = require('./searchEngine'),
     app = express();
-    //https = require('https'),  
-    
-    //var https = require('https');
    
 // http://expressjs.com/en/starter/static-files.html
 app.use(express.static('public'));
@@ -38,7 +35,6 @@ app.get("/search/*", function(req, res) {
       console.log(results)
     });
   
-  //res.end();
 });
 
 // post results of last 10 searches
