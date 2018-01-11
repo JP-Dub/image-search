@@ -5,8 +5,8 @@ exports.engine = function(url, complete) {
   
   fetch(url) 
     .then(function(res) {
-    console.log(res)
-    var err = {status: res.staus, statusCode: res.statusCode};
+    //console.log(res)
+    var err = {status: res.staus, statusText: res.statusText};
     if(res.status !== 200) return complete(err);
     //console.log(res.status,"Status", res.json)
       return res.json();

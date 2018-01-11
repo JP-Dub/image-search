@@ -23,8 +23,7 @@ exports.store = function(query, callback) {
         assert.equal(err, null);
           //console.log('MongoDB log: {Search: ' + query + ' , Time: ' + date + "}"); 
       }); 
-      console.log("client closed");
-      client.close();
+      callback("sa)
     } else {
               
     // returns search history and time from db     
@@ -36,9 +35,10 @@ exports.store = function(query, callback) {
         assert.equal(err, null);  
         callback(null, history);
     });
-      console.log("client history closed");
-      client.close();
+      
     }
+    console.log("client closed");
+    client.close();
  });
   
 }
