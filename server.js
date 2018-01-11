@@ -5,8 +5,9 @@ var apiKEY = "&key=" + process.env.API_KEY,
     express = require('express'),
     mongo = require('./mongo'),
     search = require('./searchEngine'),
-    //https = require('https'),  
     app = express();
+    //https = require('https'),  
+    
     //var https = require('https');
    
 // http://expressjs.com/en/starter/static-files.html
@@ -20,11 +21,12 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+
 app.get("/search/*", function (req, res, next) {
   var query = req.params[0],
       offset = req.query.offset || 10, 
-      options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start=",      
-      url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
+      options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start=";     
+      var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
 
   search.engine(url, function complete(results) {
     //if (err === 200) return console.error(err);
@@ -37,6 +39,10 @@ app.get("/search/*", function (req, res, next) {
     console.log("saved: ", query);   
   });
   
+});
+
+app.get("/check/:this", function(req, res) {
+  var check = req.params
 });
 
 // post results of last 10 searches
