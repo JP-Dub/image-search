@@ -42,7 +42,9 @@ app.get("/search/*", function (req, res, next) {
 });
 
 app.get("/check/:this", function(req, res) {
-  var check = req.params
+  var check = req.params[0];
+  var word = req.query.this;
+  console.log(check, word)
 });
 
 // post results of last 10 searches
