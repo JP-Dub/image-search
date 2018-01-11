@@ -30,10 +30,12 @@ app.get("/search/*", function(req, res) {
 
   search.engine(url, function complete(err, results) {
     if (err) return console.log(err);
-     return res.json(results);    
-  }),
+     res.json(results); 
+  })
+  
   mongo.store(query, function(err, results) {
-      if(err) return console.error(err);      
+      if(err) return console.error(err);
+      return;
     });
 });
 
