@@ -30,11 +30,11 @@ app.get("/search/*", function(req, res) {
 
   search.engine(url, function complete(err, results) {
     if (err) return console.log(err);
-      res.json(results);
-    mongo.store(query, function(err, results) {
+     return res.json(results);    
+  }),
+  mongo.store(query, function(err, results) {
       if(err) return console.error(err);      
     });
-  });
 });
 
 // post results of last 10 searches
@@ -42,7 +42,7 @@ app.get("/history", function (req, res) {
   //var results;
   mongo.store(null, function callback(err, results) { 
     if(err) return console.error(err);
-    res.json(results);
+    res.json(results.reverse());
   });     
 });
 

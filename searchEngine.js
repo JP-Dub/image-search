@@ -11,7 +11,7 @@ exports.engine = function(url, complete) {
       return res.json();
     }).then(function(json) {
     var jsonp = json.items;
-    console.log(jsonp.length, "length")
+    //console.log(jsonp.length, "length")
       var obj = [];
       for(var i = 0; i < jsonp.length; i++) {
         var arr = jsonp[i],

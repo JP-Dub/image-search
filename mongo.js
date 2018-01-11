@@ -21,9 +21,11 @@ exports.store = function(query, callback) {
        date = t.replace(/(GMT|UTC)(-|\+)\d{0,4}\s+/g, "");
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
-          console.log('MongoDB log: {Search: ' + query + ' , Time: ' + date + "}");   
+          console.log('MongoDB log: {Search: ' + query + ' , Time: ' + date + "}"); 
       }); 
-    }
+      console.log("client closed");
+      client.close();
+    } else {
               
     // returns search history and time from db     
     collection.find({}, { 
@@ -33,8 +35,12 @@ exports.store = function(query, callback) {
       }).toArray(function(err, history) {
         assert.equal(err, null);  
         callback(null, history);
-    });    
+    });
+      console.log("client history closed");
+      client.close();
+    }
  });
+  
 }
 
 //module.exports.search = search;
