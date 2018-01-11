@@ -41,10 +41,10 @@ app.get("/search/*", function(req, res, next) {
   
 });
 
-app.get("/check/:anything", function(req, res) {
-  var check = req.params[0];
-  var word = req.check;
-  console.log(req.params, check, word)
+app.get("/:offset", function(req, res) {
+  var check = req.params;
+  //var word = req.check.offset;
+  console.log(req.params, check)
 });
 
 // post results of last 10 searches
