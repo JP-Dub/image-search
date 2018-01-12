@@ -21,12 +21,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/JP-Dub/header-request"
+    "url": "https://github.com/JP-Dub/image-search"
   },
   "author": "jDub",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/JP-Dub/header-request/issues"
+    "url": "https://github.com/JP-Dub/image-search/issues"
   },
   "keywords": [
     "fcc",
