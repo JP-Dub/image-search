@@ -32,7 +32,7 @@ app.get("/search/*", function(req, res) {
   }),// saves search results to mongodb
      mongo.store(query, function(err, results) {
       if(err) return console.error(err);
-      console.log(results)
+      console.log(results.ops)
     }); 
 });
 

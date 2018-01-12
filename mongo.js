@@ -22,7 +22,7 @@ exports.store = function(query, callback) {
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
         var dbLog= {Search: query, Time: date};
-        return callback(null, dbLog)
+        return callback(null, results)
       }); 
       
     } else {
