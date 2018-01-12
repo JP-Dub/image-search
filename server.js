@@ -36,7 +36,7 @@ app.get("/search/*", function(req, res) {
     }); 
 });
 
-// post results of last 10 searches
+// posts the last 10 search queries
 app.get("/history", function (req, res) {
   mongo.store(null, function callback(err, results) { 
     if(err) return console.error(err);
