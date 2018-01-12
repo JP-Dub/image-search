@@ -2,6 +2,7 @@
 // init project
 var apiKEY = "&key=" + process.env.API_KEY,
     cxENG = "&cx=" + process.env.CX_ENG,
+    options = process.env.OPTIONS,
     express = require('express'),
     mongo = require('./mongo'),
     search = require('./searchEngine'),
@@ -21,19 +22,19 @@ app.get("/", function (request, response) {
 // destination for search and search results
 app.get("/search/*", function(req, res) {
   var query = req.params[0],
-      offset = req.query.offset || 0, 
-      options = "&exactTerms=" + query + "&num=10&c2coff=1&imgSize=large&imgType=photo&searchType=image&imgColorType=color&fields=items&startPage=";  
-      var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
-  
+      offset = req.query.offset || 0; 
+     // options = "&exactTerms=" + query + "&num=10&c2coff=1&imgSize=large&imgType=photo&searchType=image&imgColorType=color&fields=items&startPage=";  
+      //var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
+       var url = "https://www.googleapis.com/customsearch/v1?" + options + offset + "q=" + query + "&exactTerms=" + query + apiKEY + cxENG;
   // function for http request
   search.engine(url, function complete(err, results) {
     if (err) return res.json(err);
       res.json(results);     
-  }),// saves search results to mongodb
-     mongo.store(query, function(err, results) {
+  });// saves search results to mongodb
+     /*mongo.store(query, function(err, results) {
       if(err) return console.error(err);
       console.log(results.ops)
-    }); 
+    });*/ 
 });
 
 // posts the last 10 search queries
@@ -50,3 +51,12 @@ var listener = app.listen(process.env.PORT, function () {
 });
 
 // options = "&exactTerms=" + query + "&num=10&c2coff=1&imgColorType=color&client=google-csbe&fields=items&start="; 
+
+/*
+
+  var query = req.params[0],
+      offset = req.query.offset || 0, 
+      options = "&exactTerms=" + query + "&num=10&c2coff=1&imgSize=large&imgType=photo&searchType=image&imgColorType=color&fields=items&startPage=";  
+      var url = "https://www.googleapis.com/customsearch/v1?q=" + query + options + offset + apiKEY + cxENG; 
+
+*/
