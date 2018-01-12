@@ -44,8 +44,8 @@ exports.store = function(query, callback) {
 //collection.deleteMany();//{Search:null});
 //date = t.replace(/(GMT|UTC)(-|\+)\d{0,4}\s+/g, "");
 //module.exports.search = search;
-    /*
-    collection.find({}).toArray(function(err, history) {
-      assert.equal(err, null);
-      return callback(null, history);
-    });*/
+/*
+collection.find({}).toArray(function(err, history) {
+   assert.equal(err, null);
+   return callback(null, history);
+});*/
