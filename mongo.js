@@ -18,7 +18,8 @@ exports.store = function(query, callback) {
     if(query) {  
       // inserts the new query and current time into the db
       var t = new Date().toString(),
-       date = t.replace(/(GMT|UTC)(-|\+)\d{0,4}\s+/g, "");
+        reg = /^(.{4})(.*)(:\d{2}\s)(.*)$/g,
+        date = t.replace(reg, "$2, $4");
       collection.insertOne({Search: query, Time: date}, function(err, results) {
         assert.equal(err, null);
         var dbLog= {Search: query, Time: date};
@@ -46,5 +47,5 @@ exports.store = function(query, callback) {
  });
   
 }
-
+//date = t.replace(/(GMT|UTC)(-|\+)\d{0,4}\s+/g, "");
 //module.exports.search = search;
