@@ -10,11 +10,12 @@ exports.store = function(query, callback) {
     assert.equal(null, err);
       console.log('Mongo connection established...');
     
+    //creates a db and collection
     var db = client.db(dbName);  
     var collection = db.collection('history');
     
     //collection.deleteMany();//{Search:null});
-    
+    console.log(db.stats());
     if(query) {  
       // inserts the new query and current time into the db
       var t = new Date().toString(),
@@ -27,20 +28,20 @@ exports.store = function(query, callback) {
       }); 
       
     } else {
-    
+    /*
     collection.find({}).toArray(function(err, history) {
       assert.equal(err, null);
       return callback(null, history);
-    });/*
+    });*/
     // returns search history and time from db     
     collection.find({}, { 
-      sort: {Time: -1},
+      sort: {_id: -1},
       limit: 10,
       projection : {_id: 0, Search: 1, Time: 1}
       }).toArray(function(err, history) {
         assert.equal(err, null);  
         return callback(null, history);
-    });     */
+    });     
     }
     console.log("client closed");
     client.close();
