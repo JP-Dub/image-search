@@ -26,7 +26,11 @@ exports.store = function(query, callback) {
       }); 
       
     } else {
-              
+    
+    collection.find({}).toArray(function(err, history) {
+      assert.equal(err, null);
+      return callback(null, history);
+    });/*
     // returns search history and time from db     
     collection.find({}, { 
       sort: {Time: -1},
@@ -35,7 +39,7 @@ exports.store = function(query, callback) {
       }).toArray(function(err, history) {
         assert.equal(err, null);  
         return callback(null, history);
-    });     
+    });     */
     }
     console.log("client closed");
     client.close();
