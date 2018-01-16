@@ -19,6 +19,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+
 // destination for search and search results
 app.get("/search/*", function(req, res) {
   var query = req.params[0],
@@ -40,7 +41,8 @@ app.get("/search/*", function(req, res) {
 app.get("/history", function (req, res) {
   mongo.store(null, function callback(err, results) { 
     if(err) return console.error(err);
-    res.json(results);
+    //app.set(results.spaces, 4);
+    res.send(results);
   });     
 });
 
