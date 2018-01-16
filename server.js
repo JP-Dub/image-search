@@ -19,6 +19,7 @@ app.get("/", function (request, response) {
   response.sendFile(__dirname + '/views/index.html');
 });
 
+app.set("json spaces", 2);
 
 // destination for search and search results
 app.get("/search/*", function(req, res) {
@@ -41,7 +42,6 @@ app.get("/search/*", function(req, res) {
 app.get("/history", function (req, res) {
   mongo.store(null, function callback(err, results) { 
     if(err) return console.error(err);
-    //app.set(results.spaces, 4);
     res.send(results);
   });     
 });
